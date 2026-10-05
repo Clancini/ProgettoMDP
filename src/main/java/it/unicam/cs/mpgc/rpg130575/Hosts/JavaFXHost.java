@@ -1,5 +1,6 @@
 package it.unicam.cs.mpgc.rpg130575.Hosts;
 
+import it.unicam.cs.mpgc.rpg130575.Game.Game;
 import it.unicam.cs.mpgc.rpg130575.Rendering.JavaFXRenderer;
 import it.unicam.cs.mpgc.rpg130575.Rendering.JavaFXWindow;
 import javafx.animation.AnimationTimer;
@@ -30,7 +31,7 @@ public final class JavaFXHost extends Application
 
         JavaFXRenderer renderer = new JavaFXRenderer(canvas.getGraphicsContext2D());
 
-        _gameHost = new GameHost(window, renderer);
+        _gameHost = new GameHost(window, renderer, new Game());
 
         AnimationTimer gameLoop = new JavaFXLoop();
         gameLoop.start();
