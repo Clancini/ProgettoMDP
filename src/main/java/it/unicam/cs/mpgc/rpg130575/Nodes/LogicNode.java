@@ -1,5 +1,8 @@
 package it.unicam.cs.mpgc.rpg130575.Nodes;
 
+import it.unicam.cs.mpgc.rpg130575.DependencyInjection.DependencyContainer;
+import it.unicam.cs.mpgc.rpg130575.DependencyInjection.IReadOnlyDependencyContainer;
+
 import java.util.EnumSet;
 
 public class LogicNode
@@ -13,6 +16,32 @@ public class LogicNode
 
     // Start with all properties invalid.
     private EnumSet<LogicNodeInvalidation> _invlidation = EnumSet.allOf(LogicNodeInvalidation.class);
+
+    private LogicNodeLoadState _loadState = LogicNodeLoadState.NotLoaded;
+
+    private IReadOnlyDependencyContainer _container = DependencyContainer.Empty;
+
+    public final LogicNodeLoadState GetLoadState() { return _loadState; }
+
+    protected final IReadOnlyDependencyContainer GetDependencyContainer() { return _container; }
+
+    public final void Load(IReadOnlyDependencyContainer parentDependencies)
+    {
+        if (_loadState != LogicNodeLoadState.NotLoaded)
+            throw new IllegalStateException("Cannot load a LogicNode which is already loaded or loading");
+
+        _loadState = LogicNodeLoadState.Loading;
+
+        // TODO: Decide ordering between these two.
+        _container = CreateChildDependencies(parentDependencies);
+        OnLoad();
+
+        _loadState = LogicNodeLoadState.Loaded;
+    }
+
+    protected void OnLoad() { }
+
+    protected IReadOnlyDependencyContainer CreateChildDependencies(IReadOnlyDependencyContainer parentDependencies) { return parentDependencies; }
 
     public void SetParent(LogicNode parent) { _parent = parent; }
     public LogicNode GetParent() { return _parent; }

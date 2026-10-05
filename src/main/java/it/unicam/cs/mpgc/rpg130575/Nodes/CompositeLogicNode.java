@@ -11,6 +11,9 @@ public class CompositeLogicNode extends LogicNode
         _children.add(node);
 
         node.SetParent(this);
+
+        if (node.GetLoadState() != LogicNodeLoadState.NotLoaded)
+            node.Load(GetDependencyContainer());
     }
 
     @Override

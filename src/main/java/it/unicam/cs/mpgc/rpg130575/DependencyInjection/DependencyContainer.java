@@ -5,6 +5,8 @@ import java.util.Map;
 
 public class DependencyContainer implements IDependencyContainer
 {
+    public final static DependencyContainer Empty = new DependencyContainer();
+
     private final Map<Class<?>, Object> _registeredDependencies = new HashMap<>();
 
     private final IReadOnlyDependencyContainer _parent;
