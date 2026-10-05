@@ -26,9 +26,6 @@ public class CompositeLogicNode extends LogicNode
         PostChildrenUpdate();
     }
 
-    public void PreChildrenUpdate() { }
-    public void PostChildrenUpdate() { }
-
     @Override
     public void UpdateLayout()
     {
@@ -39,6 +36,9 @@ public class CompositeLogicNode extends LogicNode
             child.UpdateLayout();
         }
     }
+
+    public void PreChildrenUpdate() { }
+    public void PostChildrenUpdate() { }
 
     @Override
     public void CreateDrawNode() { DrawNode = new CompositeDrawNode(this, _children); }

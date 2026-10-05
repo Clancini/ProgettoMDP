@@ -14,9 +14,12 @@ public class LogicNode
     // Start with all properties invalid.
     private EnumSet<LogicNodeInvalidation> _invlidation = EnumSet.allOf(LogicNodeInvalidation.class);
 
-    public void Update() { }
+    public void SetParent(LogicNode parent) { _parent = parent; }
+    public LogicNode GetParent() { return _parent; }
 
     public void InvalidateProperty(LogicNodeInvalidation property) { _invlidation.add(property); }
+
+    public void Update() { }
 
     public void UpdateLayout()
     {
@@ -54,9 +57,6 @@ public class LogicNode
 
         return DrawNode;
     }
-
-    public void SetParent(LogicNode parent) { _parent = parent; }
-    public LogicNode GetParent() { return _parent; }
 
     public void SetWidth(float width)
     {
