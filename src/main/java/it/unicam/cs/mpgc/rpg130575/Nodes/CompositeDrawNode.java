@@ -10,9 +10,9 @@ public class CompositeDrawNode extends DrawNode
 
     public CompositeDrawNode(CompositeLogicNode source, Vector<LogicNode> children)
     {
-        super(source);
-
         _children = children;
+
+        super(source);
     }
 
     @Override

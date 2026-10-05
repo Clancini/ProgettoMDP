@@ -14,6 +14,6 @@ public class DrawNode
 
     public void Draw(IRenderer renderer)
     {
-        renderer.DrawQuad(_source.Transform, Color.WHITE);
+        renderer.DrawQuad(_source.WorldTransform, Color.WHITE);
     }
 }

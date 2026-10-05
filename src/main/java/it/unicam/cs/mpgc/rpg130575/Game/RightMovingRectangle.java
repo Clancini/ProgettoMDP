@@ -7,7 +7,7 @@ public class RightMovingRectangle extends LogicNode
     @Override
     public void Update()
     {
-        if (Transform.GetPositionX() < 1000)
-            Transform.SetPositionX(Transform.GetPositionX() + 1);
+        if (WorldTransform.GetPositionX() < 1000)
+            WorldTransform.SetPositionX(WorldTransform.GetPositionX() + 1);
     }
 }

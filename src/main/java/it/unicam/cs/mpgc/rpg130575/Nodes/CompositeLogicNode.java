@@ -9,6 +9,8 @@ public class CompositeLogicNode extends LogicNode
     public void Add(LogicNode node)
     {
         _children.add(node);
+
+        node.SetParent(this);
     }
 
     @Override
@@ -28,5 +30,62 @@ public class CompositeLogicNode extends LogicNode
     public void PostChildrenUpdate() { }
 
     @Override
-    public final CompositeDrawNode GetDrawNode() { return new CompositeDrawNode(this, _children); }
+    public void UpdateLayout()
+    {
+        super.UpdateLayout();
+
+        for (LogicNode child : _children)
+        {
+            child.UpdateLayout();
+        }
+    }
+
+    @Override
+    public void CreateDrawNode() { DrawNode = new CompositeDrawNode(this, _children); }
+
+    @Override
+    public void InvalidateProperty(LogicNodeInvalidation property)
+    {
+        super.InvalidateProperty(property);
+
+        InvalidatePropertyInChildren(property);
+    }
+
+    protected final void InvalidatePropertyInChildren(LogicNodeInvalidation property)
+    {
+        for (LogicNode child : _children)
+        {
+            child.InvalidateProperty(property);
+        }
+    }
+
+    @Override
+    public void SetWidth(float width)
+    {
+        InvalidatePropertyInChildren(LogicNodeInvalidation.Transform);
+
+        super.SetWidth(width);
+    }
+
+    @Override
+    public void SetHeight(float height)
+    {
+        InvalidatePropertyInChildren(LogicNodeInvalidation.Transform);
+
+        super.SetHeight(height);
+    }
+
+    public void SetPositionX(float positionX)
+    {
+        InvalidatePropertyInChildren(LogicNodeInvalidation.Transform);
+
+        super.SetPositionX(positionX);
+    }
+
+    public void SetPositionY(float positionY)
+    {
+        InvalidatePropertyInChildren(LogicNodeInvalidation.Transform);
+
+        super.SetPositionY(positionY);
+    }
 }
