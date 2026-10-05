@@ -1,10 +1,24 @@
 package it.unicam.cs.mpgc.rpg130575.Nodes;
 
+import java.util.List;
 import java.util.Vector;
 
 public class CompositeLogicNode extends LogicNode
 {
     private final Vector<LogicNode> _children = new Vector<>();
+
+    private boolean _ignoreSubtreeForInput;
+
+    public void SetIgnoreSubtreeForInput(boolean value) { _ignoreSubtreeForInput = value; }
+
+    @Override
+    public final boolean JoinInputQueueIfNeeded(List<LogicNode> list)
+    {
+        if (_ignoreSubtreeForInput)
+            return false;
+
+        return super.JoinInputQueueIfNeeded(list);
+    }
 
     public void Add(LogicNode node)
     {

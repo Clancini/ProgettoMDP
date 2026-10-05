@@ -2,6 +2,7 @@ package it.unicam.cs.mpgc.rpg130575.Hosts;
 
 import it.unicam.cs.mpgc.rpg130575.DependencyInjection.DependencyContainer;
 import it.unicam.cs.mpgc.rpg130575.Game.Game;
+import it.unicam.cs.mpgc.rpg130575.Input.JavaFXInputManager;
 import it.unicam.cs.mpgc.rpg130575.Nodes.CompositeLogicNode;
 import it.unicam.cs.mpgc.rpg130575.Rendering.JavaFXRenderer;
 import it.unicam.cs.mpgc.rpg130575.Rendering.JavaFXWindow;
@@ -33,7 +34,11 @@ public final class JavaFXHost extends Application
 
         JavaFXRenderer renderer = new JavaFXRenderer(canvas.getGraphicsContext2D());
 
-        _gameHost = new GameHost(window, renderer, CreateGame());
+        JavaFXInputManager inputManager = new JavaFXInputManager();
+
+        scene.setOnKeyPressed(inputManager);
+
+        _gameHost = new GameHost(window, renderer, inputManager, CreateGame());
 
         AnimationTimer gameLoop = new JavaFXLoop();
         gameLoop.start();

@@ -4,6 +4,7 @@ import it.unicam.cs.mpgc.rpg130575.DependencyInjection.DependencyContainer;
 import it.unicam.cs.mpgc.rpg130575.DependencyInjection.IReadOnlyDependencyContainer;
 
 import java.util.EnumSet;
+import java.util.List;
 
 public class LogicNode
 {
@@ -20,6 +21,18 @@ public class LogicNode
     private LogicNodeLoadState _loadState = LogicNodeLoadState.NotLoaded;
 
     private IReadOnlyDependencyContainer _container = DependencyContainer.Empty;
+
+    private boolean _acceptsInput = true;
+
+    public void SetAcceptsInput(boolean value) { _acceptsInput = value; }
+
+    public boolean JoinInputQueueIfNeeded(List<LogicNode> inputs)
+    {
+        if (_acceptsInput)
+            inputs.add(this);
+
+        return true;
+    }
 
     public final LogicNodeLoadState GetLoadState() { return _loadState; }
 
