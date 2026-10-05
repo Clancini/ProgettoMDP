@@ -1,6 +1,7 @@
 package it.unicam.cs.mpgc.rpg130575.Rendering;
 
 import it.unicam.cs.mpgc.rpg130575.Nodes.Transform;
+import it.unicam.cs.mpgc.rpg130575.Types.CColor;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -13,6 +14,14 @@ public class JavaFXRenderer implements IRenderer
         _context = context;
     }
 
+    public Color ToJavaFXColor(CColor color)
+    {
+        return new Color(CColor.Clamped01(color.R),
+                CColor.Clamped01(color.G),
+                CColor.Clamped01(color.B),
+                CColor.Clamped01(color.A));
+    }
+
     @Override
     public void BeginFrame(float windowWidth, float windowHeight)
     {
@@ -21,9 +30,9 @@ public class JavaFXRenderer implements IRenderer
         _context.fillRect(0, 0, windowWidth, windowHeight);
     }
 
-    public void DrawQuad(Transform transform, Color color)
+    public void DrawQuad(Transform transform, CColor color)
     {
-        _context.setFill(color);
+        _context.setFill(ToJavaFXColor(color));
 
         _context.fillRect(transform.GetPositionX(), transform.GetPositionY(),
                 transform.GetWidth(), transform.GetHeight());

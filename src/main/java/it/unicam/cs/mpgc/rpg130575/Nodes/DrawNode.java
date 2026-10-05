@@ -1,7 +1,7 @@
 package it.unicam.cs.mpgc.rpg130575.Nodes;
 
 import it.unicam.cs.mpgc.rpg130575.Rendering.IRenderer;
-import javafx.scene.paint.Color;
+import it.unicam.cs.mpgc.rpg130575.Types.CColor;
 
 public class DrawNode
 {
@@ -14,6 +14,6 @@ public class DrawNode
 
     public void Draw(IRenderer renderer)
     {
-        renderer.DrawQuad(_source.WorldTransform, Color.WHITE);
+        renderer.DrawQuad(_source.WorldTransform, new CColor(255, 255, 255));
     }
 }
