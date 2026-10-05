@@ -26,6 +26,8 @@ public class Game extends CompositeLogicNode
         compo.Add(whiteBox2);
 
         LocalTransform.SetPositionY(50);
+
+        compo.Add(new InputHandlingNode());
     }
 
     @Override

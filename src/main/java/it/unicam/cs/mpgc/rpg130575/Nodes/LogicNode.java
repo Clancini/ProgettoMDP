@@ -2,6 +2,7 @@ package it.unicam.cs.mpgc.rpg130575.Nodes;
 
 import it.unicam.cs.mpgc.rpg130575.DependencyInjection.DependencyContainer;
 import it.unicam.cs.mpgc.rpg130575.DependencyInjection.IReadOnlyDependencyContainer;
+import it.unicam.cs.mpgc.rpg130575.Input.CKeyboardKeyEvent;
 
 import java.util.EnumSet;
 import java.util.List;
@@ -33,6 +34,8 @@ public class LogicNode
 
         return true;
     }
+
+    public boolean OnKeyboardKeyDown(CKeyboardKeyEvent event) { return false; }
 
     public final LogicNodeLoadState GetLoadState() { return _loadState; }
 

@@ -14,10 +14,18 @@ public class CompositeLogicNode extends LogicNode
     @Override
     public final boolean JoinInputQueueIfNeeded(List<LogicNode> list)
     {
+        if (!super.JoinInputQueueIfNeeded(list))
+            return false;
+
         if (_ignoreSubtreeForInput)
             return false;
 
-        return super.JoinInputQueueIfNeeded(list);
+        for (LogicNode child : _children)
+        {
+            child.JoinInputQueueIfNeeded(list);
+        }
+
+        return true;
     }
 
     public void Add(LogicNode node)

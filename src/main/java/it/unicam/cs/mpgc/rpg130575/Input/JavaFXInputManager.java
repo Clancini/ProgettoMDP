@@ -12,7 +12,9 @@ public class JavaFXInputManager implements EventHandler<KeyEvent>, IInputManager
     private final HashSet<IInputListener> _listeners = new HashSet<>();
 
     private final Map<KeyCode, CKeyboardKey> _keyboardKeysMappings = Map.of(
-        KeyCode.A, CKeyboardKey.A
+        KeyCode.Q, CKeyboardKey.Q,
+        KeyCode.W, CKeyboardKey.W,
+        KeyCode.E, CKeyboardKey.E
     );
 
     @Override
