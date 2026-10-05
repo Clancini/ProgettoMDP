@@ -29,8 +29,8 @@ public class Game extends CompositeLogicNode
     }
 
     @Override
-    public void PreChildrenUpdate()
+    public void PreChildrenUpdate(double deltaSeconds)
     {
-        SetPositionX(LocalTransform.GetPositionX() + 0.1f);
+        SetPositionX(LocalTransform.GetPositionX() + (50 * (float)deltaSeconds));
     }
 }

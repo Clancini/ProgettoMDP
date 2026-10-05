@@ -53,7 +53,7 @@ public final class JavaFXHost extends Application
         @Override
         public void handle(long now)
         {
-            _gameHost.Update();
+            _gameHost.Update(now);
         }
     }
 }

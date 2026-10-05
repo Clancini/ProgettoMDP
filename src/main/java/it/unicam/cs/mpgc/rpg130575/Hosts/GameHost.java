@@ -11,6 +11,8 @@ public class GameHost
 
     private final CompositeLogicNode _rootLogicNode;
 
+    private long _lastTime;
+
     public GameHost(IWindow window, IRenderer renderer, CompositeLogicNode game)
     {
         _window = window;
@@ -19,9 +21,20 @@ public class GameHost
         _rootLogicNode = game;
     }
 
-    public void Update()
+    public void Update(long time)
     {
-        _rootLogicNode.Update();
+        if (_lastTime == 0)
+        {
+            _lastTime = time;
+            return;
+        }
+
+        long delta = time - _lastTime;
+        _lastTime = time;
+
+        double deltaSeconds = delta / 1_000_000_000f;
+
+        _rootLogicNode.Update(deltaSeconds);
 
         _renderer.BeginFrame(_window.GetWidth(), _window.GetHeight());
 

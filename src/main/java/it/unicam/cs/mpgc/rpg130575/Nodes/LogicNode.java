@@ -48,7 +48,7 @@ public class LogicNode
 
     public void InvalidateProperty(LogicNodeInvalidation property) { _invlidation.add(property); }
 
-    public void Update() { }
+    public void Update(double deltaSeconds) { }
 
     public void UpdateLayout()
     {

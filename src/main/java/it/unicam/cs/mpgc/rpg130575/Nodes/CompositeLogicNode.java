@@ -17,16 +17,16 @@ public class CompositeLogicNode extends LogicNode
     }
 
     @Override
-    public final void Update()
+    public final void Update(double deltaSeconds)
     {
-        PreChildrenUpdate();
+        PreChildrenUpdate(deltaSeconds);
 
         for (LogicNode child : _children)
         {
-            child.Update();
+            child.Update(deltaSeconds);
         }
 
-        PostChildrenUpdate();
+        PostChildrenUpdate(deltaSeconds);
     }
 
     @Override
@@ -40,8 +40,8 @@ public class CompositeLogicNode extends LogicNode
         }
     }
 
-    public void PreChildrenUpdate() { }
-    public void PostChildrenUpdate() { }
+    public void PreChildrenUpdate(double deltaSeconds) { }
+    public void PostChildrenUpdate(double deltaSeconds) { }
 
     @Override
     public void CreateDrawNode() { DrawNode = new CompositeDrawNode(this, _children); }
