@@ -2,6 +2,8 @@ package it.unicam.cs.mpgc.rpg130575.Rendering;
 
 import it.unicam.cs.mpgc.rpg130575.Nodes.Transform;
 import it.unicam.cs.mpgc.rpg130575.Types.CColor;
+import it.unicam.cs.mpgc.rpg130575.Types.IReadonlyTexture;
+import it.unicam.cs.mpgc.rpg130575.Types.JavaFXTexture;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -36,5 +38,17 @@ public class JavaFXRenderer implements IRenderer
 
         _context.fillRect(transform.GetPositionX(), transform.GetPositionY(),
                 transform.GetWidth(), transform.GetHeight());
+    }
+
+    public void DrawImage(Transform transform, IReadonlyTexture texture)
+    {
+        if (!(texture instanceof JavaFXTexture javaFXTexture))
+            throw new IllegalStateException("Passed texture is not a JavaFXRenderer-compatible texture");
+
+        _context.drawImage(javaFXTexture.GetImage(),
+                transform.GetPositionX(),
+                transform.GetPositionY(),
+                transform.GetWidth(),
+                transform.GetHeight());
     }
 }
