@@ -1,9 +1,6 @@
 package it.unicam.cs.mpgc.rpg130575.Rendering;
 
-import it.unicam.cs.mpgc.rpg130575.Types.Transform;
-import it.unicam.cs.mpgc.rpg130575.Types.CColor;
-import it.unicam.cs.mpgc.rpg130575.Types.IReadonlyTexture;
-import it.unicam.cs.mpgc.rpg130575.Types.JavaFXTexture;
+import it.unicam.cs.mpgc.rpg130575.Types.*;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -40,7 +37,7 @@ public class JavaFXRenderer implements IRenderer
                 transform.GetWidth(), transform.GetHeight());
     }
 
-    public void DrawImage(Transform transform, IReadonlyTexture texture)
+    public void DrawImage(Transform transform, INativeTexture texture)
     {
         if (!(texture instanceof JavaFXTexture javaFXTexture))
             throw new IllegalStateException("Passed texture is not a JavaFXRenderer-compatible texture");

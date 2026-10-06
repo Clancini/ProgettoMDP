@@ -1,24 +1,30 @@
 package it.unicam.cs.mpgc.rpg130575.Nodes;
 
-import it.unicam.cs.mpgc.rpg130575.Types.IReadonlyTexture;
+import it.unicam.cs.mpgc.rpg130575.Types.INativeTexture;
+import it.unicam.cs.mpgc.rpg130575.Types.INativeTextureStorage;
+import it.unicam.cs.mpgc.rpg130575.Types.TextureInfo;
 
 public class SpriteNode extends LogicNode
 {
-    private IReadonlyTexture _texture;
+    private INativeTexture _nativeTexture;
 
-    public void SetTexture(IReadonlyTexture texture, boolean autoResize)
+    public void SetTexture(String textureLookup, boolean autoResize)
     {
-        _texture = texture;
+        _nativeTexture = GetDependencyContainer()
+                .Get(INativeTextureStorage.class)
+                .GetTexture(textureLookup);
+
+        TextureInfo info =_nativeTexture.GetTextureInfo();
 
         if (autoResize)
         {
-            LocalTransform.SetWidth(_texture.GetWidth());
-            LocalTransform.SetHeight(_texture.GetHeight());
+            LocalTransform.SetWidth(info.GetWidth());
+            LocalTransform.SetHeight(info.GetHeight());
         }
     }
 
     @Override
     public void CreateDrawNode() { DrawNode = new TextureDrawNode(this); }
 
-    public final IReadonlyTexture GetTexture() { return _texture; }
+    public final INativeTexture GetTexture() { return _nativeTexture; }
 }

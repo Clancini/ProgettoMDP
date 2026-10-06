@@ -4,44 +4,34 @@ import javafx.scene.image.Image;
 
 import java.io.InputStream;
 
-public class JavaFXTexture implements IReadonlyTexture
+public class JavaFXTexture implements INativeTexture
 {
-    private final String _resource;
-
-    private final float _width;
-    private final float _height;
+    private final TextureInfo _textureInfo;
 
     private Image _image;
 
-    public JavaFXTexture(String resource, float width, float height)
+    public JavaFXTexture(TextureInfo textureInfo)
     {
-        _resource = resource;
-
-        _width = width;
-        _height = height;
+        _textureInfo = textureInfo;
     }
 
-    public String GetResource() { return _resource; }
-
-    public float GetWidth() { return _width; }
-
-    public float GetHeight() { return _height; }
+    public TextureInfo GetTextureInfo() { return _textureInfo; }
 
     public Image GetImage()
     {
         if (_image == null)
-            LoadImage();
+            Load();
 
         return _image;
     }
 
-    public void LoadImage()
+    public void Load()
     {
         // TODO: try?
-        InputStream stream = getClass().getResourceAsStream(_resource);
+        InputStream stream = getClass().getResourceAsStream(_textureInfo.GetResource());
 
         if (stream == null)
-            throw new NullPointerException("Resource doesn't exist at path: " + _resource);
+            throw new NullPointerException("Resource doesn't exist at path: " + _textureInfo.GetResource());
 
         _image = new Image(stream);
     }

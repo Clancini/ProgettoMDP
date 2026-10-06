@@ -6,6 +6,8 @@ import it.unicam.cs.mpgc.rpg130575.Input.JavaFXInputManager;
 import it.unicam.cs.mpgc.rpg130575.Nodes.CompositeLogicNode;
 import it.unicam.cs.mpgc.rpg130575.Rendering.JavaFXRenderer;
 import it.unicam.cs.mpgc.rpg130575.Rendering.JavaFXWindow;
+import it.unicam.cs.mpgc.rpg130575.Types.INativeTextureStorage;
+import it.unicam.cs.mpgc.rpg130575.Types.JavaFXTextureStorage;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -48,7 +50,12 @@ public final class JavaFXHost extends Application
     {
         Game game = new Game();
 
-        game.Load(DependencyContainer.Empty);
+        DependencyContainer startingDependencies = new DependencyContainer();
+
+        // Cache as the interface.
+        startingDependencies.Cache(INativeTextureStorage.class, new JavaFXTextureStorage());
+
+        game.Load(startingDependencies);
 
         return game;
     }

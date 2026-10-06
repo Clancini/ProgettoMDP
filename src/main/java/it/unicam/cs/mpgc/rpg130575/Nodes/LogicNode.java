@@ -71,8 +71,8 @@ public class LogicNode implements ILayoutChangeListener
 
     // REGION Parenting
 
-    public void SetParent(LogicNode parent) { _parent = parent; }
-    public LogicNode GetParent() { return _parent; }
+    public final void SetParent(LogicNode parent) { _parent = parent; }
+    public final LogicNode GetParent() { return _parent; }
 
     // REGION Layout
 
@@ -125,7 +125,7 @@ public class LogicNode implements ILayoutChangeListener
 
     public void CreateDrawNode() { DrawNode = new DrawNode(this); }
 
-    public DrawNode GetDrawNode()
+    public final DrawNode GetDrawNode()
     {
         if (DrawNode == null)
             CreateDrawNode();

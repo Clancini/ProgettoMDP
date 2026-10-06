@@ -3,11 +3,18 @@ package it.unicam.cs.mpgc.rpg130575.Game;
 import it.unicam.cs.mpgc.rpg130575.Nodes.CompositeLogicNode;
 import it.unicam.cs.mpgc.rpg130575.Nodes.LogicNode;
 import it.unicam.cs.mpgc.rpg130575.Nodes.SpriteNode;
-import it.unicam.cs.mpgc.rpg130575.Types.JavaFXTexture;
+import it.unicam.cs.mpgc.rpg130575.Types.INativeTextureStorage;
+import it.unicam.cs.mpgc.rpg130575.Types.TextureInfo;
 
 public class Game extends CompositeLogicNode
 {
     public Game()
+    {
+
+    }
+
+    @Override
+    public void OnLoad()
     {
         LogicNode whiteBox = new LogicNode();
         whiteBox.LocalTransform.SetWidth(50);
@@ -32,10 +39,18 @@ public class Game extends CompositeLogicNode
         compo.Add(new InputHandlingNode());
 
         SpriteNode sprite = new SpriteNode();
-        sprite.SetTexture(new JavaFXTexture("/compassion.jpg", 320 / 3, 318 / 3), true);
-        sprite.LocalTransform.SetPositionX(150);
+
+        GetDependencyContainer()
+                .Get(INativeTextureStorage.class)
+                .AddTexture(
+                        new TextureInfo("/compassion.jpg", 320 / 3, 318 / 3),
+                        "compassion",
+                        true);
 
         compo.Add(sprite);
+
+        sprite.SetTexture("compassion", true);
+        sprite.LocalTransform.SetPositionX(150);
     }
 
     @Override

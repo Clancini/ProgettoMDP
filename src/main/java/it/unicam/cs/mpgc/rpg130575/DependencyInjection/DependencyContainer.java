@@ -42,6 +42,9 @@ public class DependencyContainer implements IDependencyContainer
             found = _parent.Get(type);
 
         // Give up with null if after climbing the parents we still can't find it.
+        if (found == null)
+            throw new IllegalStateException("Couldn't find dependency of type " + type);
+
         return type.cast(found);
     }
 }
