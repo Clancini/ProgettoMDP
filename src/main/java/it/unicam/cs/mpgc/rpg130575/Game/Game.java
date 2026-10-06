@@ -1,5 +1,7 @@
 package it.unicam.cs.mpgc.rpg130575.Game;
 
+import it.unicam.cs.mpgc.rpg130575.Input.CKeyboardKey;
+import it.unicam.cs.mpgc.rpg130575.Input.CKeyboardKeyEvent;
 import it.unicam.cs.mpgc.rpg130575.Nodes.CompositeLogicNode;
 import it.unicam.cs.mpgc.rpg130575.Nodes.LogicNode;
 import it.unicam.cs.mpgc.rpg130575.Nodes.SpriteNode;
@@ -8,6 +10,8 @@ import it.unicam.cs.mpgc.rpg130575.Types.TextureInfo;
 
 public class Game extends CompositeLogicNode
 {
+    CompositeLogicNode compo;
+
     public Game()
     {
 
@@ -22,7 +26,7 @@ public class Game extends CompositeLogicNode
 
         Add(whiteBox);
 
-        CompositeLogicNode compo = new CompositeLogicNode();
+        compo = new CompositeLogicNode();
         compo.LocalTransform.SetPositionX(100);
         compo.LocalTransform.SetPositionY(100);
 
@@ -56,6 +60,24 @@ public class Game extends CompositeLogicNode
     @Override
     public void PreChildrenUpdate(double deltaSeconds)
     {
-        LocalTransform.SetPositionX(LocalTransform.GetPositionX() + (50 * (float)deltaSeconds));
+        //LocalTransform.SetPositionX(LocalTransform.GetPositionX() + (50 * (float)deltaSeconds));
+    }
+
+    @Override
+    public boolean OnKeyboardKeyDown(CKeyboardKeyEvent event)
+    {
+        if (event.Key == CKeyboardKey.Q)
+        {
+            GetDrawNode().SetIsVisible(false);
+            return true;
+        }
+
+        if (event.Key == CKeyboardKey.W)
+        {
+            GetDrawNode().SetIsVisible(true);
+            return true;
+        }
+
+        return false;
     }
 }

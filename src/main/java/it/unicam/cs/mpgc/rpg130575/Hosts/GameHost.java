@@ -49,6 +49,6 @@ public class GameHost
         _renderer.BeginFrame(_window.GetWidth(), _window.GetHeight());
 
         _rootLogicNode.UpdateLayout();
-        _rootLogicNode.GetDrawNode().Draw(_renderer);
+        _rootLogicNode.GetDrawNode().PreDraw(_renderer);
     }
 }
