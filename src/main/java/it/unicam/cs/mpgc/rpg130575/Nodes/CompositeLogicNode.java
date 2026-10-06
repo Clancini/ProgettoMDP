@@ -1,5 +1,7 @@
 package it.unicam.cs.mpgc.rpg130575.Nodes;
 
+import it.unicam.cs.mpgc.rpg130575.Types.LayoutInvalidation;
+
 import java.util.List;
 import java.util.Vector;
 
@@ -8,6 +10,8 @@ public class CompositeLogicNode extends LogicNode
     private final Vector<LogicNode> _children = new Vector<>();
 
     private boolean _ignoreSubtreeForInput;
+
+    // REGION Input
 
     public void SetIgnoreSubtreeForInput(boolean value) { _ignoreSubtreeForInput = value; }
 
@@ -28,6 +32,8 @@ public class CompositeLogicNode extends LogicNode
         return true;
     }
 
+    // REGION Parenting
+
     public void Add(LogicNode node)
     {
         _children.add(node);
@@ -36,6 +42,35 @@ public class CompositeLogicNode extends LogicNode
 
         if (node.GetLoadState() == LogicNodeLoadState.NotLoaded)
             node.Load(GetDependencyContainer());
+    }
+
+    // REGION Layout
+
+    @Override
+    public void InvalidateProperty(LayoutInvalidation property)
+    {
+        super.InvalidateProperty(property);
+
+        InvalidatePropertyInChildren(property);
+    }
+
+    protected final void InvalidatePropertyInChildren(LayoutInvalidation property)
+    {
+        for (LogicNode child : _children)
+        {
+            child.InvalidateProperty(property);
+        }
+    }
+
+    @Override
+    public void UpdateLayout()
+    {
+        super.UpdateLayout();
+
+        for (LogicNode child : _children)
+        {
+            child.UpdateLayout();
+        }
     }
 
     @Override
@@ -51,66 +86,11 @@ public class CompositeLogicNode extends LogicNode
         PostChildrenUpdate(deltaSeconds);
     }
 
-    @Override
-    public void UpdateLayout()
-    {
-        super.UpdateLayout();
-
-        for (LogicNode child : _children)
-        {
-            child.UpdateLayout();
-        }
-    }
-
     public void PreChildrenUpdate(double deltaSeconds) { }
     public void PostChildrenUpdate(double deltaSeconds) { }
 
+    // REGION Rendering
+
     @Override
     public void CreateDrawNode() { DrawNode = new CompositeDrawNode(this, _children); }
-
-    @Override
-    public void InvalidateProperty(LogicNodeInvalidation property)
-    {
-        super.InvalidateProperty(property);
-
-        InvalidatePropertyInChildren(property);
-    }
-
-    protected final void InvalidatePropertyInChildren(LogicNodeInvalidation property)
-    {
-        for (LogicNode child : _children)
-        {
-            child.InvalidateProperty(property);
-        }
-    }
-
-    @Override
-    public void SetWidth(float width)
-    {
-        InvalidatePropertyInChildren(LogicNodeInvalidation.Transform);
-
-        super.SetWidth(width);
-    }
-
-    @Override
-    public void SetHeight(float height)
-    {
-        InvalidatePropertyInChildren(LogicNodeInvalidation.Transform);
-
-        super.SetHeight(height);
-    }
-
-    public void SetPositionX(float positionX)
-    {
-        InvalidatePropertyInChildren(LogicNodeInvalidation.Transform);
-
-        super.SetPositionX(positionX);
-    }
-
-    public void SetPositionY(float positionY)
-    {
-        InvalidatePropertyInChildren(LogicNodeInvalidation.Transform);
-
-        super.SetPositionY(positionY);
-    }
 }
