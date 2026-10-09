@@ -1,5 +1,6 @@
 package it.unicam.cs.mpgc.rpg130575.Nodes;
 
+import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LogicNode;
 import it.unicam.cs.mpgc.rpg130575.Types.INativeTexture;
 import it.unicam.cs.mpgc.rpg130575.Types.INativeTextureStorage;
 import it.unicam.cs.mpgc.rpg130575.Types.TextureInfo;
@@ -18,13 +19,13 @@ public class SpriteNode extends LogicNode
 
         if (autoResize)
         {
-            LocalTransform.SetWidth(info.GetWidth());
-            LocalTransform.SetHeight(info.GetHeight());
+            GetLayoutNode().LocalTransform.SetWidth(info.GetWidth());
+            GetLayoutNode().LocalTransform.SetHeight(info.GetHeight());
         }
     }
 
     @Override
-    public void CreateDrawNode() { DrawNode = new TextureDrawNode(this); }
+    public void CreateDrawNode() { SetDrawNode(new TextureDrawNode(this)); }
 
     public final INativeTexture GetTexture() { return _nativeTexture; }
 }

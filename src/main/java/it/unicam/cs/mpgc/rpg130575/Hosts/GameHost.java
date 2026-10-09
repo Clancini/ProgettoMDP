@@ -2,7 +2,7 @@ package it.unicam.cs.mpgc.rpg130575.Hosts;
 
 import it.unicam.cs.mpgc.rpg130575.Input.GameInputPropagator;
 import it.unicam.cs.mpgc.rpg130575.Input.IInputManager;
-import it.unicam.cs.mpgc.rpg130575.Nodes.CompositeLogicNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeLogicNode;
 import it.unicam.cs.mpgc.rpg130575.Rendering.IRenderer;
 import it.unicam.cs.mpgc.rpg130575.Rendering.IWindow;
 
@@ -48,7 +48,7 @@ public class GameHost
 
         _renderer.BeginFrame(_window.GetWidth(), _window.GetHeight());
 
-        _rootLogicNode.UpdateLayout();
+        _rootLogicNode.GetLayoutNode().UpdateLayout();
         _rootLogicNode.GetDrawNode().PreDraw(_renderer);
     }
 }

@@ -1,6 +1,6 @@
 package it.unicam.cs.mpgc.rpg130575.Input;
 
-import it.unicam.cs.mpgc.rpg130575.Nodes.LogicNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LogicNode;
 
 import java.util.ArrayList;
 import java.util.List;

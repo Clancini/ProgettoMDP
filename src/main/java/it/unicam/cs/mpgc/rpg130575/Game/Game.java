@@ -2,8 +2,9 @@ package it.unicam.cs.mpgc.rpg130575.Game;
 
 import it.unicam.cs.mpgc.rpg130575.Input.CKeyboardKey;
 import it.unicam.cs.mpgc.rpg130575.Input.CKeyboardKeyEvent;
-import it.unicam.cs.mpgc.rpg130575.Nodes.CompositeLogicNode;
-import it.unicam.cs.mpgc.rpg130575.Nodes.LogicNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeLogicNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LayoutNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LogicNode;
 import it.unicam.cs.mpgc.rpg130575.Nodes.SpriteNode;
 import it.unicam.cs.mpgc.rpg130575.Types.INativeTextureStorage;
 import it.unicam.cs.mpgc.rpg130575.Types.TextureInfo;
@@ -21,24 +22,29 @@ public class Game extends CompositeLogicNode
     public void OnLoad()
     {
         LogicNode whiteBox = new LogicNode();
-        whiteBox.LocalTransform.SetWidth(50);
-        whiteBox.LocalTransform.SetHeight(50);
+        LayoutNode layoutNode = whiteBox.GetLayoutNode();
+        layoutNode.LocalTransform.SetWidth(50);
+        layoutNode.LocalTransform.SetHeight(10);
 
         Add(whiteBox);
 
         compo = new CompositeLogicNode();
-        compo.LocalTransform.SetPositionX(100);
-        compo.LocalTransform.SetPositionY(100);
+        layoutNode = compo.GetLayoutNode();
+        layoutNode.LocalTransform.SetPositionX(100);
+        layoutNode.LocalTransform.SetPositionY(100);
 
         Add(compo);
 
         LogicNode whiteBox2 = new LogicNode();
-        whiteBox2.LocalTransform.SetWidth(100);
-        whiteBox2.LocalTransform.SetHeight(50);
+        layoutNode = whiteBox2.GetLayoutNode();
+        layoutNode.LocalTransform.SetWidth(100);
+        layoutNode.LocalTransform.SetHeight(70);
+        layoutNode.LocalTransform.SetPositionY(100);
 
         compo.Add(whiteBox2);
 
-        LocalTransform.SetPositionY(50);
+        layoutNode = GetLayoutNode();
+        layoutNode.LocalTransform.SetPositionY(50);
 
         compo.Add(new InputHandlingNode());
 
@@ -54,13 +60,14 @@ public class Game extends CompositeLogicNode
         compo.Add(sprite);
 
         sprite.SetTexture("compassion", true);
-        sprite.LocalTransform.SetPositionX(150);
+        layoutNode = sprite.GetLayoutNode();
+        layoutNode.LocalTransform.SetPositionX(150);
     }
 
     @Override
     public void PreChildrenUpdate(double deltaSeconds)
     {
-        //LocalTransform.SetPositionX(LocalTransform.GetPositionX() + (50 * (float)deltaSeconds));
+        GetLayoutNode().LocalTransform.SetPositionX(GetLayoutNode().LocalTransform.GetPositionX() + (50 * (float)deltaSeconds));
     }
 
     @Override

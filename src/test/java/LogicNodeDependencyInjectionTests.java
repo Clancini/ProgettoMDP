@@ -1,7 +1,7 @@
 import it.unicam.cs.mpgc.rpg130575.DependencyInjection.DependencyContainer;
 import it.unicam.cs.mpgc.rpg130575.DependencyInjection.IReadOnlyDependencyContainer;
-import it.unicam.cs.mpgc.rpg130575.Nodes.CompositeLogicNode;
-import it.unicam.cs.mpgc.rpg130575.Nodes.LogicNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeLogicNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LogicNode;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

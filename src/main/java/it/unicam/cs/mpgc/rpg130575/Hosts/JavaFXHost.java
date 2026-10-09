@@ -3,7 +3,7 @@ package it.unicam.cs.mpgc.rpg130575.Hosts;
 import it.unicam.cs.mpgc.rpg130575.DependencyInjection.DependencyContainer;
 import it.unicam.cs.mpgc.rpg130575.Game.Game;
 import it.unicam.cs.mpgc.rpg130575.Input.JavaFXInputManager;
-import it.unicam.cs.mpgc.rpg130575.Nodes.CompositeLogicNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeLogicNode;
 import it.unicam.cs.mpgc.rpg130575.Rendering.JavaFXRenderer;
 import it.unicam.cs.mpgc.rpg130575.Rendering.JavaFXWindow;
 import it.unicam.cs.mpgc.rpg130575.Types.INativeTextureStorage;

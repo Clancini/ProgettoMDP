@@ -1,14 +1,18 @@
-package it.unicam.cs.mpgc.rpg130575.Nodes;
+package it.unicam.cs.mpgc.rpg130575.Nodes.Composite;
 
+import it.unicam.cs.mpgc.rpg130575.Nodes.Base.DrawNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LayoutNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LogicNode;
 import it.unicam.cs.mpgc.rpg130575.Rendering.IRenderer;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class CompositeDrawNode extends DrawNode
 {
-    private final Vector<LogicNode> _children;
+    private final ArrayList<LogicNode> _children;
 
-    public CompositeDrawNode(CompositeLogicNode source, Vector<LogicNode> children)
+    public CompositeDrawNode(LayoutNode source, ArrayList<LogicNode> children)
     {
         _children = children;
 
