@@ -1,8 +1,8 @@
 package it.unicam.cs.mpgc.rpg130575.Nodes.Base;
 
-import it.unicam.cs.mpgc.rpg130575.Types.ILayoutChangeListener;
-import it.unicam.cs.mpgc.rpg130575.Types.LayoutInvalidation;
-import it.unicam.cs.mpgc.rpg130575.Types.Transform;
+import it.unicam.cs.mpgc.rpg130575.Types.Layout.ILayoutChangeListener;
+import it.unicam.cs.mpgc.rpg130575.Types.Layout.LayoutInvalidation;
+import it.unicam.cs.mpgc.rpg130575.Types.Layout.Transform;
 
 import java.util.EnumSet;
 

@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg130575.Types;
+package it.unicam.cs.mpgc.rpg130575.Types.Layout;
 
 import java.util.ArrayList;
 import java.util.List;

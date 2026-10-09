@@ -11,7 +11,7 @@ public class DependencyContainer implements IDependencyContainer
 
     private final IReadOnlyDependencyContainer _parent;
 
-    public DependencyContainer()
+    private DependencyContainer()
     {
         this(null);
     }

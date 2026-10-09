@@ -1,6 +1,9 @@
 package it.unicam.cs.mpgc.rpg130575.Rendering;
 
 import it.unicam.cs.mpgc.rpg130575.Types.*;
+import it.unicam.cs.mpgc.rpg130575.Types.Layout.Transform;
+import it.unicam.cs.mpgc.rpg130575.Types.Textures.INativeTexture;
+import it.unicam.cs.mpgc.rpg130575.Types.Textures.JavaFXTexture;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 

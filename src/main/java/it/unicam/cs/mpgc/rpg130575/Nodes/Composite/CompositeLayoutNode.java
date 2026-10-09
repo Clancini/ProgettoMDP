@@ -2,7 +2,7 @@ package it.unicam.cs.mpgc.rpg130575.Nodes.Composite;
 
 import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LayoutNode;
 import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LogicNode;
-import it.unicam.cs.mpgc.rpg130575.Types.LayoutInvalidation;
+import it.unicam.cs.mpgc.rpg130575.Types.Layout.LayoutInvalidation;
 
 import java.util.ArrayList;
 

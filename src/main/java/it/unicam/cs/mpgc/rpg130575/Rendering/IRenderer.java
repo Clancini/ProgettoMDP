@@ -1,7 +1,7 @@
 package it.unicam.cs.mpgc.rpg130575.Rendering;
 
-import it.unicam.cs.mpgc.rpg130575.Types.INativeTexture;
-import it.unicam.cs.mpgc.rpg130575.Types.Transform;
+import it.unicam.cs.mpgc.rpg130575.Types.Textures.INativeTexture;
+import it.unicam.cs.mpgc.rpg130575.Types.Layout.Transform;
 import it.unicam.cs.mpgc.rpg130575.Types.CColor;
 
 public interface IRenderer
