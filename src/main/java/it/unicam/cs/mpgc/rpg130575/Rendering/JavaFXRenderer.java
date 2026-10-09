@@ -21,7 +21,6 @@ public class JavaFXRenderer implements IRenderer
                 CColor.Clamped01(color.A));
     }
 
-    @Override
     public void BeginFrame(float windowWidth, float windowHeight)
     {
         _context.setFill(Color.BLACK);

@@ -17,7 +17,6 @@ public class JavaFXInputManager implements EventHandler<KeyEvent>, IInputManager
         KeyCode.E, CKeyboardKey.E
     );
 
-    @Override
     public void handle(KeyEvent event)
     {
         for (IInputListener listener : _listeners)
@@ -27,7 +26,6 @@ public class JavaFXInputManager implements EventHandler<KeyEvent>, IInputManager
         }
     }
 
-    @Override
     public void RegisterListener(IInputListener listener)
     {
         _listeners.add(listener);

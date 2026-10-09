@@ -21,7 +21,6 @@ public class DependencyContainer implements IDependencyContainer
         _parent = parent;
     }
 
-    @Override
     public <T> void Cache(Class<T> type, T instance)
     {
         if (_registeredDependencies.containsKey(type))
@@ -30,7 +29,6 @@ public class DependencyContainer implements IDependencyContainer
         _registeredDependencies.put(type, instance);
     }
 
-    @Override
     public <T> T Get(Class<T> type)
     {
         Object found = _registeredDependencies.get(type);
