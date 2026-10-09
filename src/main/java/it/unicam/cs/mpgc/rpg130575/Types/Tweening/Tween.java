@@ -7,6 +7,12 @@ public abstract class Tween
 
     protected float Progress;
 
+    private boolean _cancelled;
+
+    public final float GetProgress() { return Progress; }
+
+    public final boolean GetIsCancelled() { return _cancelled; }
+
     public Tween(double duration)
     {
         _duration = duration;
@@ -30,4 +36,11 @@ public abstract class Tween
     protected abstract void Update();
 
     public final boolean IsDone() { return Progress >= 1.0f; }
+
+    public final void Cancel()
+    {
+        _passedTime = _duration;
+
+        _cancelled = true;
+    }
 }

@@ -15,7 +15,7 @@ public class TweenManager
         {
             tween.TickForward(deltaSeconds);
 
-            if (tween.IsDone())
+            if (tween.IsDone() || tween.GetIsCancelled())
                 _pendingRemovals.add(tween);
         }
 

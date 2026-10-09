@@ -30,6 +30,6 @@ public class TransformPositionXTween extends Tween
     @Override
     protected void Update()
     {
-        _target.SetPositionX(_startValue + (_endValue * Progress));
+        _target.SetPositionX(_startValue + (_endValue - _startValue) * Progress);
     }
 }
