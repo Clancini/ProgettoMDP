@@ -25,10 +25,11 @@ public final class JavaFXHost extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-        _window = new JavaFXWindow(primaryStage, "Untitled Mania Game");
+        Canvas canvas = new Canvas(JavaFXWindow.DefaultWidth, JavaFXWindow.DefaultHeight);
+
+        _window = new JavaFXWindow(primaryStage, canvas, "Untitled Mania Game");
 
         Pane pane = new Pane();
-        Canvas canvas = new Canvas(_window.GetWidth(), _window.GetHeight());
 
         pane.getChildren().add(canvas);
 

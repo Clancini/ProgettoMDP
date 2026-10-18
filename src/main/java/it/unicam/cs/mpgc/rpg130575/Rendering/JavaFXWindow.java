@@ -1,22 +1,25 @@
 package it.unicam.cs.mpgc.rpg130575.Rendering;
 
+import javafx.scene.canvas.Canvas;
 import javafx.stage.Stage;
 
 public final class JavaFXWindow implements IWindow
 {
     private final Stage _stage;
+    private final Canvas _canvas;
 
-    private final static float _defaultWidth = 480;
-    private final static float _defaultHeight = 270;
+    public final static float DefaultWidth = 480;
+    public final static float DefaultHeight = 270;
 
-    public JavaFXWindow(Stage stage, String title)
+    public JavaFXWindow(Stage stage, Canvas canvas, String title)
     {
-        this(stage, title, _defaultWidth, _defaultHeight);
+        this(stage, canvas, title, DefaultWidth, DefaultHeight);
     }
 
-    public JavaFXWindow(Stage stage, String title, float width, float height)
+    public JavaFXWindow(Stage stage, Canvas canvas, String title, float width, float height)
     {
         _stage = stage;
+        _canvas = canvas;
 
         SetTitle(title);
         SetWidth(width);
@@ -27,10 +30,18 @@ public final class JavaFXWindow implements IWindow
 
     // We want pixel size (int).
     public float GetWidth() { return (float)_stage.getWidth(); }
-    public void SetWidth(float pixels) { _stage.setWidth(pixels); }
+    public void SetWidth(float pixels)
+    {
+        _stage.setWidth(pixels);
+        _canvas.setWidth(pixels);
+    }
 
     public float GetHeight() { return (float)_stage.getHeight(); }
-    public void SetHeight(float pixels) { _stage.setHeight(pixels); }
+    public void SetHeight(float pixels)
+    {
+        _stage.setHeight(pixels);
+        _canvas.setHeight(pixels);
+    }
 
     public String GetTitle() { return _stage.getTitle(); }
     public void SetTitle(String title) { _stage.setTitle(title); }
