@@ -43,4 +43,13 @@ public abstract class Tween
 
         _cancelled = true;
     }
+
+    public void Reset()
+    {
+        if (_cancelled)
+            throw new IllegalStateException("Can't reset a cancelled tween");
+
+        Progress = 0;
+        _passedTime = 0;
+    }
 }
