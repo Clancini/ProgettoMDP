@@ -20,6 +20,13 @@ public class LayoutNode implements ILayoutChangeListener
     public final void SetParent(LogicNode parent) { _parent = parent; }
     public final LogicNode GetParent() { return _parent; }
 
+    public boolean HasLayoutInvalidation(EnumSet<LayoutInvalidation> invalidations)
+    {
+        if (invalidations.size() != _invalidation.size())
+            return false;
+
+        return _invalidation.containsAll(invalidations);
+    }
     public void InvalidateProperty(LayoutInvalidation property) { _invalidation.add(property); }
 
     public void UpdateLayout()

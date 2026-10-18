@@ -1,47 +1,78 @@
-import it.unicam.cs.mpgc.rpg130575.DependencyInjection.DependencyContainer;
 import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeLogicNode;
-import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LayoutNode;
 import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LogicNode;
+import it.unicam.cs.mpgc.rpg130575.Types.Layout.LayoutInvalidation;
 import org.junit.jupiter.api.Test;
 
+import java.util.EnumSet;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LogicNodeLayoutTests
 {
     @Test
-    public void ContainerMovementMovesChildren()
+    public void LayoutUpdatesArePropagated()
     {
-        CompositeLogicNode container = new CompositeLogicNode();
-        LogicNode node = new LogicNode();
+        CompositeLogicNode rootNode = new CompositeLogicNode();
 
-        container.Load(DependencyContainer.Empty);
-        container.Add(node);
+        LogicNode childNode1 = new LogicNode();
+        LogicNode childNode2 = new LogicNode();
 
-        LayoutNode containerLayout = container.GetLayoutNode();
-        LayoutNode nodeLayout = node.GetLayoutNode();
+        rootNode.Add(childNode1);
+        rootNode.Add(childNode2);
 
-        assertEquals(0, containerLayout.WorldTransform.GetPositionX());
-        assertEquals(0, containerLayout.WorldTransform.GetPositionY());
+        assertTrue(rootNode.GetLayoutNode().HasLayoutInvalidation(EnumSet.allOf(LayoutInvalidation.class)));
+        assertTrue(childNode1.GetLayoutNode().HasLayoutInvalidation(EnumSet.allOf(LayoutInvalidation.class)));
+        assertTrue(childNode2.GetLayoutNode().HasLayoutInvalidation(EnumSet.allOf(LayoutInvalidation.class)));
 
-        assertEquals(0, nodeLayout.WorldTransform.GetPositionX());
-        assertEquals(0, nodeLayout.WorldTransform.GetPositionY());
+        rootNode.GetLayoutNode().UpdateLayout();
 
-        containerLayout.LocalTransform.SetPositionX(50);
-        containerLayout.UpdateLayout();
+        assertTrue(rootNode.GetLayoutNode().HasLayoutInvalidation(EnumSet.noneOf(LayoutInvalidation.class)));
+        assertTrue(childNode1.GetLayoutNode().HasLayoutInvalidation(EnumSet.noneOf(LayoutInvalidation.class)));
+        assertTrue(childNode2.GetLayoutNode().HasLayoutInvalidation(EnumSet.noneOf(LayoutInvalidation.class)));
+    }
 
-        assertEquals(50, containerLayout.WorldTransform.GetPositionX());
-        assertEquals(0, containerLayout.WorldTransform.GetPositionY());
+    @Test
+    public void LayoutInvalidationsArePropagated()
+    {
+        CompositeLogicNode rootNode = new CompositeLogicNode();
 
-        assertEquals(50, nodeLayout.WorldTransform.GetPositionX());
-        assertEquals(0, nodeLayout.WorldTransform.GetPositionY());
+        LogicNode childNode1 = new LogicNode();
+        LogicNode childNode2 = new LogicNode();
 
-        nodeLayout.LocalTransform.SetPositionX(50);
-        containerLayout.UpdateLayout();
+        rootNode.Add(childNode1);
+        rootNode.Add(childNode2);
 
-        assertEquals(50, containerLayout.WorldTransform.GetPositionX());
-        assertEquals(0, containerLayout.WorldTransform.GetPositionY());
+        rootNode.GetLayoutNode().UpdateLayout();
 
-        assertEquals(100, nodeLayout.WorldTransform.GetPositionX());
-        assertEquals(0, nodeLayout.WorldTransform.GetPositionY());
+        rootNode.GetLayoutNode().LocalTransform.SetPositionX(50);
+
+        assertTrue(rootNode.GetLayoutNode().HasLayoutInvalidation(EnumSet.of(LayoutInvalidation.Position)));
+        assertTrue(childNode1.GetLayoutNode().HasLayoutInvalidation(EnumSet.of(LayoutInvalidation.Position)));
+        assertTrue(childNode2.GetLayoutNode().HasLayoutInvalidation(EnumSet.of(LayoutInvalidation.Position)));
+    }
+
+    @Test
+    public void LayoutInvalidationArePropagatedToParents()
+    {
+        CompositeLogicNode rootNode = new CompositeLogicNode();
+        CompositeLogicNode childParentNode = new CompositeLogicNode();
+
+        rootNode.Add(childParentNode);
+
+        LogicNode childNode1 = new LogicNode();
+        LogicNode childNode2 = new LogicNode();
+
+        childParentNode.Add(childNode1);
+        childParentNode.Add(childNode2);
+
+        rootNode.GetLayoutNode().UpdateLayout();
+
+        rootNode.GetLayoutNode().LocalTransform.SetPositionX(50);
+
+        assertTrue(rootNode.GetLayoutNode().HasLayoutInvalidation(EnumSet.of(LayoutInvalidation.Position)));
+        assertTrue(childParentNode.GetLayoutNode().HasLayoutInvalidation(EnumSet.of(LayoutInvalidation.Position)));
+        assertTrue(childNode1.GetLayoutNode().HasLayoutInvalidation(EnumSet.of(LayoutInvalidation.Position)));
+        assertTrue(childNode2.GetLayoutNode().HasLayoutInvalidation(EnumSet.of(LayoutInvalidation.Position)));
     }
 }
