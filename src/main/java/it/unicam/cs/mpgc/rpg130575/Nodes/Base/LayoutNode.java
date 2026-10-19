@@ -50,8 +50,10 @@ public class LayoutNode implements ILayoutChangeListener
             return;
         }
 
-        WorldTransform.SetPositionX(LocalTransform.GetPositionX() + _parent.GetLayoutNode().WorldTransform.GetPositionX());
-        WorldTransform.SetPositionY(LocalTransform.GetPositionY() + _parent.GetLayoutNode().WorldTransform.GetPositionY());
+        Transform parentTransform = _parent.GetLayoutNode().WorldTransform;
+
+        WorldTransform.SetPositionX((LocalTransform.GetPositionX() * parentTransform.GetScale()) + parentTransform.GetPositionX());
+        WorldTransform.SetPositionY((LocalTransform.GetPositionY() * parentTransform.GetScale()) + parentTransform.GetPositionY());
     }
 
     private void UpdateSizing()
