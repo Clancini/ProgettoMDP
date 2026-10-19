@@ -21,6 +21,8 @@ public class LogicNodeLayoutTests
         rootNode.Add(childNode1);
         rootNode.Add(childNode2);
 
+        rootNode.Update(0);
+
         assertTrue(rootNode.GetLayoutNode().HasLayoutInvalidation(EnumSet.allOf(LayoutInvalidation.class)));
         assertTrue(childNode1.GetLayoutNode().HasLayoutInvalidation(EnumSet.allOf(LayoutInvalidation.class)));
         assertTrue(childNode2.GetLayoutNode().HasLayoutInvalidation(EnumSet.allOf(LayoutInvalidation.class)));
@@ -42,6 +44,8 @@ public class LogicNodeLayoutTests
 
         rootNode.Add(childNode1);
         rootNode.Add(childNode2);
+
+        rootNode.Update(0);
 
         rootNode.GetLayoutNode().UpdateLayout();
 
@@ -65,6 +69,8 @@ public class LogicNodeLayoutTests
 
         childParentNode.Add(childNode1);
         childParentNode.Add(childNode2);
+
+        rootNode.Update(0);
 
         rootNode.GetLayoutNode().UpdateLayout();
 
