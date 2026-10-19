@@ -26,11 +26,20 @@ public class JavaFXSample implements ISample
                 .toExternalForm());
     }
 
-    public void Play()
+    public void Play() { Play(1); }
+    public void Play(double volume)
     {
         if (_clip == null)
             Load();
 
-        _clip.play();
+        _clip.play(volume);
+    }
+
+    public void Stop()
+    {
+        if (_clip == null)
+            return;
+
+        _clip.stop();
     }
 }

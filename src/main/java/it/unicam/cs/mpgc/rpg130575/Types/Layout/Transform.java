@@ -13,6 +13,8 @@ public class Transform
     private float _width;
     private float _height;
 
+    private float _scale = 1;
+
     public Transform(ILayoutChangeListener source)
     {
         if (source != null)
@@ -45,6 +47,13 @@ public class Transform
     {
         _positionY = y;
         SendLayoutChange(LayoutInvalidation.Position);
+    }
+
+    public float GetScale() { return _scale; }
+    public void SetScale(float scale)
+    {
+        _scale = scale;
+        SendLayoutChange(LayoutInvalidation.Sizing);
     }
 
     private void SendLayoutChange(LayoutInvalidation type)

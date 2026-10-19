@@ -7,4 +7,7 @@ public interface ISample
     public void Load();
 
     public void Play();
+    public void Play(double volume);
+
+    public void Stop();
 }

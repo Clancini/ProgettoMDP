@@ -21,7 +21,7 @@ public class TransformPositionYTween extends Tween
         _target = target;
 
         if (startValue != _target.GetPositionY())
-            _target.SetPositionX(startValue);
+            _target.SetPositionY(startValue);
 
         _startValue = startValue;
         _endValue = endValue;

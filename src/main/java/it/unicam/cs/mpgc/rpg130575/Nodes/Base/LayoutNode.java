@@ -60,13 +60,19 @@ public class LayoutNode implements ILayoutChangeListener
 
         if (_parent == null)
         {
-            WorldTransform.SetWidth(LocalTransform.GetWidth());
-            WorldTransform.SetHeight(LocalTransform.GetHeight());
+            WorldTransform.SetWidth(LocalTransform.GetWidth() * LocalTransform.GetScale());
+            WorldTransform.SetHeight(LocalTransform.GetHeight() * LocalTransform.GetScale());
+
+            WorldTransform.SetScale(LocalTransform.GetScale());
 
             return;
         }
 
-        WorldTransform.SetWidth(LocalTransform.GetWidth());
-        WorldTransform.SetHeight(LocalTransform.GetHeight());
+        float totalScale = LocalTransform.GetScale() * _parent.GetLayoutNode().WorldTransform.GetScale();
+
+        WorldTransform.SetScale(totalScale);
+
+        WorldTransform.SetWidth(LocalTransform.GetWidth() * totalScale);
+        WorldTransform.SetHeight(LocalTransform.GetHeight() * totalScale);
     }
 }
