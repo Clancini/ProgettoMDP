@@ -9,6 +9,8 @@ public class DrawNode
 
     private boolean _isVisible = true;
 
+    private CColor _color = new CColor(255, 255, 255);
+
     public DrawNode(LayoutNode source)
     {
         _source = source;
@@ -16,6 +18,8 @@ public class DrawNode
 
     public boolean GetIsVisible() { return _isVisible; }
     public void SetIsVisible(boolean value) { _isVisible = value; }
+
+    public void SetColor(CColor color) { _color = color; }
 
     public final void PreDraw(IRenderer renderer)
     {
@@ -27,6 +31,6 @@ public class DrawNode
 
     public void Draw(IRenderer renderer)
     {
-        renderer.DrawQuad(_source.WorldTransform, new CColor(255, 255, 255));
+        renderer.DrawQuad(_source.WorldTransform, _color);
     }
 }
