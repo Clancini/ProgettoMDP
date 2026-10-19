@@ -10,12 +10,13 @@ import java.util.Vector;
 public class CompositeLogicNode extends LogicNode
 {
     private final ArrayList<LogicNode> _children = new ArrayList<>();
+    private final ArrayList<LogicNode> _pendingChildrenAdd = new ArrayList<>();
 
     private boolean _ignoreSubtreeForInput;
 
     public void Add(LogicNode node)
     {
-        _children.add(node);
+        _pendingChildrenAdd.add(node);
 
         node.GetLayoutNode().SetParent(this);
 
@@ -46,6 +47,9 @@ public class CompositeLogicNode extends LogicNode
     public final void Update(double deltaSeconds)
     {
         PreChildrenUpdate(deltaSeconds);
+
+        _children.addAll(_pendingChildrenAdd);
+        _pendingChildrenAdd.clear();
 
         for (LogicNode child : _children)
         {
