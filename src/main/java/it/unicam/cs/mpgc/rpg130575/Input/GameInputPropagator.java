@@ -17,7 +17,7 @@ public class GameInputPropagator implements IInputListener
     }
 
     @Override
-    public void OnKeyboardInput(CKeyboardKeyEvent key)
+    public void OnKeyboardInput(CKeyboardKeyEvent key, CButtonState state)
     {
         _inputQueue.clear();
 
@@ -27,8 +27,12 @@ public class GameInputPropagator implements IInputListener
 
         for (Node node : reversedInputQueue)
         {
-            if (node.OnKeyboardKeyDown(key))
-                break;
+            if (state == CButtonState.DOWN)
+                if (node.OnKeyboardKeyDown(key))
+                    break;
+            else
+                if (node.OnKeyboardKeyUp(key))
+                    break;
         }
     }
 }

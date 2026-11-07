@@ -1,9 +1,6 @@
 package it.unicam.cs.mpgc.rpg130575.Backends.JavaFX.Input;
 
-import it.unicam.cs.mpgc.rpg130575.Input.CKeyboardKey;
-import it.unicam.cs.mpgc.rpg130575.Input.CKeyboardKeyEvent;
-import it.unicam.cs.mpgc.rpg130575.Input.IInputListener;
-import it.unicam.cs.mpgc.rpg130575.Input.IInputManager;
+import it.unicam.cs.mpgc.rpg130575.Input.*;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -86,8 +83,15 @@ public class JavaFXInputManager implements EventHandler<KeyEvent>, IInputManager
     {
         for (IInputListener listener : _listeners)
         {
+            CButtonState buttonState;
+
+            if (event.getEventType() == KeyEvent.KEY_PRESSED)
+                buttonState = CButtonState.DOWN;
+            else
+                buttonState = CButtonState.UP;
+
             listener.OnKeyboardInput(
-                    new CKeyboardKeyEvent(_keyboardKeysMappings.get(event.getCode())));
+                    new CKeyboardKeyEvent(_keyboardKeysMappings.get(event.getCode())), buttonState);
         }
     }
 

@@ -51,6 +51,7 @@ public class Node
     }
 
     public boolean OnKeyboardKeyDown(CKeyboardKeyEvent event) { return false; }
+    public boolean OnKeyboardKeyUp(CKeyboardKeyEvent event) { return false; }
 
     public final void Load(IReadOnlyDependencyContainer parentDependencies)
     {

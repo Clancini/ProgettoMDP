@@ -1,3 +1,4 @@
+import it.unicam.cs.mpgc.rpg130575.Input.CButtonState;
 import it.unicam.cs.mpgc.rpg130575.Input.CKeyboardKey;
 import it.unicam.cs.mpgc.rpg130575.Input.CKeyboardKeyEvent;
 import it.unicam.cs.mpgc.rpg130575.Input.GameInputPropagator;
@@ -16,7 +17,7 @@ public class InputPropagationTests
         TestingNode node = new TestingNode(false);
 
         GameInputPropagator propagator = new GameInputPropagator(node);
-        propagator.OnKeyboardInput(new CKeyboardKeyEvent(CKeyboardKey.ENTER));
+        propagator.OnKeyboardInput(new CKeyboardKeyEvent(CKeyboardKey.ENTER), CButtonState.DOWN);
 
         assertFalse(node.GetHasReceivedInput());
     }
@@ -29,7 +30,7 @@ public class InputPropagationTests
         compositeNode.Add(node);
 
         GameInputPropagator propagator = new GameInputPropagator(compositeNode);
-        propagator.OnKeyboardInput(new CKeyboardKeyEvent(CKeyboardKey.ENTER));
+        propagator.OnKeyboardInput(new CKeyboardKeyEvent(CKeyboardKey.ENTER), CButtonState.DOWN);
 
         assertFalse(node.GetHasReceivedInput());
         assertTrue(compositeNode.GetHasReceivedInput());
@@ -43,7 +44,7 @@ public class InputPropagationTests
         compositeNode.Add(node);
 
         GameInputPropagator propagator = new GameInputPropagator(compositeNode);
-        propagator.OnKeyboardInput(new CKeyboardKeyEvent(CKeyboardKey.ENTER));
+        propagator.OnKeyboardInput(new CKeyboardKeyEvent(CKeyboardKey.ENTER), CButtonState.DOWN);
 
         assertTrue(node.GetHasReceivedInput());
         assertFalse(compositeNode.GetHasReceivedInput());
@@ -57,7 +58,7 @@ public class InputPropagationTests
         compositeNode.Add(node);
 
         GameInputPropagator propagator = new GameInputPropagator(compositeNode);
-        propagator.OnKeyboardInput(new CKeyboardKeyEvent(CKeyboardKey.ENTER));
+        propagator.OnKeyboardInput(new CKeyboardKeyEvent(CKeyboardKey.ENTER), CButtonState.DOWN);
 
         assertTrue(node.GetHasReceivedInput());
         assertFalse(compositeNode.GetHasReceivedInput());
