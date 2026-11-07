@@ -5,12 +5,22 @@ import java.util.ArrayList;
 public class TweenManager
 {
     private final ArrayList<Tween> _activeTweens = new ArrayList<>();
+    private final ArrayList<Tween> _pendingAdds = new ArrayList<>();
     private final ArrayList<Tween> _pendingRemovals = new ArrayList<>();
 
-    public void AddTween(Tween tween) { _activeTweens.add(tween); }
+    public void AddTween(Tween tween)
+    {
+        _pendingAdds.add(tween);
+    }
 
     public void Update(double deltaSeconds)
     {
+        _activeTweens.addAll(_pendingAdds);
+        _activeTweens.removeAll(_pendingRemovals);
+
+        _pendingAdds.clear();
+        _pendingRemovals.clear();
+
         for (Tween tween : _activeTweens)
         {
             if (tween.IsDone() || tween.GetIsCancelled())
@@ -18,12 +28,5 @@ public class TweenManager
             else
                 tween.TickForward(deltaSeconds);
         }
-
-        for (Tween tween : _pendingRemovals)
-        {
-            _activeTweens.remove(tween);
-        }
-
-        _pendingRemovals.clear();
     }
 }
