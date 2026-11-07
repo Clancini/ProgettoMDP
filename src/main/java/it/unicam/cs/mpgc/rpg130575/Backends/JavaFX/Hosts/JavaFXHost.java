@@ -10,7 +10,7 @@ import it.unicam.cs.mpgc.rpg130575.Backends.JavaFX.Rendering.JavaFXRenderer;
 import it.unicam.cs.mpgc.rpg130575.Backends.JavaFX.Rendering.JavaFXWindow;
 import it.unicam.cs.mpgc.rpg130575.Types.Audio.ISampleStorage;
 import it.unicam.cs.mpgc.rpg130575.Backends.JavaFX.Types.Audio.JavaFXSampleStore;
-import it.unicam.cs.mpgc.rpg130575.Types.Textures.INativeTextureStorage;
+import it.unicam.cs.mpgc.rpg130575.Types.Textures.INativeTextureStore;
 import it.unicam.cs.mpgc.rpg130575.Backends.JavaFX.Types.Textures.JavaFXTextureStore;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -28,9 +28,9 @@ public final class JavaFXHost extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-        Canvas canvas = new Canvas(JavaFXWindow.DefaultWidth, JavaFXWindow.DefaultHeight);
+        Canvas canvas = new Canvas(JavaFXWindow.DefaultWidth * 3, JavaFXWindow.DefaultHeight * 3);
 
-        _window = new JavaFXWindow(primaryStage, canvas, "Untitled Mania Game");
+        _window = new JavaFXWindow(primaryStage, canvas, "Untitled Mania Game", JavaFXWindow.DefaultWidth * 3, JavaFXWindow.DefaultHeight * 3);
 
         Pane pane = new Pane();
 
@@ -60,7 +60,7 @@ public final class JavaFXHost extends Application
         DependencyContainer startingDependencies = new DependencyContainer(DependencyContainer.Empty);
 
         // Cache as the interface.
-        startingDependencies.Cache(INativeTextureStorage.class, new JavaFXTextureStore());
+        startingDependencies.Cache(INativeTextureStore.class, new JavaFXTextureStore());
         startingDependencies.Cache(ISampleStorage.class, new JavaFXSampleStore());
 
         startingDependencies.Cache(IWindow.class, _window);

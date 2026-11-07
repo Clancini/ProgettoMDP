@@ -2,7 +2,7 @@ package it.unicam.cs.mpgc.rpg130575.Nodes;
 
 import it.unicam.cs.mpgc.rpg130575.Nodes.Base.Node;
 import it.unicam.cs.mpgc.rpg130575.Types.Textures.INativeTexture;
-import it.unicam.cs.mpgc.rpg130575.Types.Textures.INativeTextureStorage;
+import it.unicam.cs.mpgc.rpg130575.Types.Textures.INativeTextureStore;
 import it.unicam.cs.mpgc.rpg130575.Types.Textures.TextureInfo;
 
 public class SpriteNode extends Node
@@ -12,7 +12,7 @@ public class SpriteNode extends Node
     public void SetTexture(String textureLookup, boolean autoResize)
     {
         _nativeTexture = GetDependencyContainer()
-                .Get(INativeTextureStorage.class)
+                .Get(INativeTextureStore.class)
                 .GetTexture(textureLookup);
 
         TextureInfo info =_nativeTexture.GetTextureInfo();
