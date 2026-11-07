@@ -10,17 +10,31 @@ public class CompositeNode extends Node
 {
     private final ArrayList<Node> _children = new ArrayList<>();
     private final ArrayList<Node> _pendingChildrenAdd = new ArrayList<>();
+    private final ArrayList<Node> _pendingChildrenRemove = new ArrayList<>();
 
     private boolean _ignoreSubtreeForInput;
 
     public void Add(Node node)
     {
-        _pendingChildrenAdd.add(node);
+        // If the node is a pending remove, only remove it from that collection.
+        // This prevents situation like calling Add() immediately before or after Remove()
+        // whose result would otherwise depend on which pending collection is applied first.
+        if (!_pendingChildrenRemove.remove(node))
+            _pendingChildrenAdd.add(node);
 
         node.GetLayoutNode().SetParent(this);
 
         if (node.GetLoadState() == LogicNodeLoadState.NotLoaded)
             node.Load(GetDependencyContainer());
+    }
+
+    public void Remove(Node node)
+    {
+        // If the node is a pending add, only remove it from that collection.
+        if (!_pendingChildrenAdd.remove(node))
+            _pendingChildrenRemove.add(node);
+
+        node.GetLayoutNode().SetParent(null);
     }
 
     @Override
@@ -41,13 +55,18 @@ public class CompositeNode extends Node
     }
 
     public void SetIgnoreSubtreeForInput(boolean value) { _ignoreSubtreeForInput = value; }
+    public boolean GetIgnoreSubtreeForInput() { return _ignoreSubtreeForInput; }
 
     @Override
     public final void Update(double deltaSeconds)
     {
         PreChildrenUpdate(deltaSeconds);
 
+        // TODO: Decide ordering between removing and adding.
+        _children.removeAll(_pendingChildrenRemove);
         _children.addAll(_pendingChildrenAdd);
+
+        _pendingChildrenRemove.clear();
         _pendingChildrenAdd.clear();
 
         for (Node child : _children)

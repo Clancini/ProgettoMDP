@@ -40,6 +40,7 @@ public class Node
     protected final IReadOnlyDependencyContainer GetDependencyContainer() { return _container; }
 
     public void SetAcceptsInput(boolean value) { _acceptsInput = value; }
+    public boolean GetAcceptsInput() { return _acceptsInput; }
 
     public boolean JoinInputQueueIfNeeded(List<Node> inputs)
     {
