@@ -6,7 +6,7 @@ import it.unicam.cs.mpgc.rpg130575.Input.CKeyboardKeyEvent;
 
 import java.util.List;
 
-public class LogicNode
+public class Node
 {
     private DrawNode DrawNode;
     private LayoutNode LayoutNode;
@@ -41,7 +41,7 @@ public class LogicNode
 
     public void SetAcceptsInput(boolean value) { _acceptsInput = value; }
 
-    public boolean JoinInputQueueIfNeeded(List<LogicNode> inputs)
+    public boolean JoinInputQueueIfNeeded(List<Node> inputs)
     {
         if (_acceptsInput)
             inputs.add(this);

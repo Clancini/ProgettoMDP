@@ -1,5 +1,7 @@
-package it.unicam.cs.mpgc.rpg130575.Types.Textures;
+package it.unicam.cs.mpgc.rpg130575.Backends.JavaFX.Types.Textures;
 
+import it.unicam.cs.mpgc.rpg130575.Types.Textures.INativeTexture;
+import it.unicam.cs.mpgc.rpg130575.Types.Textures.TextureInfo;
 import javafx.scene.image.Image;
 
 import java.io.InputStream;

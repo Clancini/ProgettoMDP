@@ -1,16 +1,16 @@
-import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LogicNode;
-import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeLogicNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Base.Node;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeNode;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class CompositeLogicNodeTests
+public class CompositeNodeTests
 {
     @Test
     public void CompositeLogicNodeAddWaitsOneFrame()
     {
-        CompositeLogicNode composite = new CompositeLogicNode();
+        CompositeNode composite = new CompositeNode();
 
         TestingNode child1 = new TestingNode(null, null);
         TestingNode child2 = new TestingNode(null, null);
@@ -38,14 +38,14 @@ public class CompositeLogicNodeTests
         assertEquals(2, addingChild3.GetUpdates());
     }
 
-    private class TestingNode extends LogicNode
+    private class TestingNode extends Node
     {
-        private CompositeLogicNode _toAddTo;
-        private LogicNode _toAdd;
+        private CompositeNode _toAddTo;
+        private Node _toAdd;
 
         private int _updates;
 
-        public TestingNode(CompositeLogicNode toAddTo, LogicNode toAdd)
+        public TestingNode(CompositeNode toAddTo, Node toAdd)
         {
             _toAddTo = toAddTo;
             _toAdd = toAdd;
@@ -68,7 +68,7 @@ public class CompositeLogicNodeTests
         }
     }
 
-    private class TestingCompositeNode extends CompositeLogicNode
+    private class TestingCompositeNode extends CompositeNode
     {
         private int _updates;
 

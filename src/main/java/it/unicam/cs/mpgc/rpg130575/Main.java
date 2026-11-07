@@ -1,6 +1,6 @@
 package it.unicam.cs.mpgc.rpg130575;
 
-import it.unicam.cs.mpgc.rpg130575.Hosts.JavaFXHost;
+import it.unicam.cs.mpgc.rpg130575.Backends.JavaFX.Hosts.JavaFXHost;
 import javafx.application.Application;
 
 public class Main

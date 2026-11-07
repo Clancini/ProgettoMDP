@@ -1,5 +1,6 @@
-package it.unicam.cs.mpgc.rpg130575.Rendering;
+package it.unicam.cs.mpgc.rpg130575.Backends.JavaFX.Rendering;
 
+import it.unicam.cs.mpgc.rpg130575.Rendering.IWindow;
 import javafx.scene.canvas.Canvas;
 import javafx.stage.Stage;
 

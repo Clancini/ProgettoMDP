@@ -1,5 +1,9 @@
-package it.unicam.cs.mpgc.rpg130575.Input;
+package it.unicam.cs.mpgc.rpg130575.Backends.JavaFX.Input;
 
+import it.unicam.cs.mpgc.rpg130575.Input.CKeyboardKey;
+import it.unicam.cs.mpgc.rpg130575.Input.CKeyboardKeyEvent;
+import it.unicam.cs.mpgc.rpg130575.Input.IInputListener;
+import it.unicam.cs.mpgc.rpg130575.Input.IInputManager;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;

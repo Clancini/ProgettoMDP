@@ -1,17 +1,17 @@
 package it.unicam.cs.mpgc.rpg130575.Input;
 
-import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LogicNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Base.Node;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameInputPropagator implements IInputListener
 {
-    private final LogicNode _treeRoot;
+    private final Node _treeRoot;
 
-    private final List<LogicNode> _inputQueue = new ArrayList<>();
+    private final List<Node> _inputQueue = new ArrayList<>();
 
-    public GameInputPropagator(LogicNode treeRoot)
+    public GameInputPropagator(Node treeRoot)
     {
         _treeRoot = treeRoot;
     }
@@ -23,9 +23,9 @@ public class GameInputPropagator implements IInputListener
 
         _treeRoot.JoinInputQueueIfNeeded(_inputQueue);
 
-        final List<LogicNode> reversedInputQueue = _inputQueue.reversed();
+        final List<Node> reversedInputQueue = _inputQueue.reversed();
 
-        for (LogicNode node : reversedInputQueue)
+        for (Node node : reversedInputQueue)
         {
             if (node.OnKeyboardKeyDown(key))
                 break;

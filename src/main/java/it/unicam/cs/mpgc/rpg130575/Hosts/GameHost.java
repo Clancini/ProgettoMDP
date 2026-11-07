@@ -2,7 +2,7 @@ package it.unicam.cs.mpgc.rpg130575.Hosts;
 
 import it.unicam.cs.mpgc.rpg130575.Input.GameInputPropagator;
 import it.unicam.cs.mpgc.rpg130575.Input.IInputManager;
-import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeLogicNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeNode;
 import it.unicam.cs.mpgc.rpg130575.Rendering.IRenderer;
 import it.unicam.cs.mpgc.rpg130575.Rendering.IWindow;
 
@@ -14,11 +14,11 @@ public class GameHost
 
     private final GameInputPropagator _inputPropagator;
 
-    private final CompositeLogicNode _rootLogicNode;
+    private final CompositeNode _rootLogicNode;
 
     private long _lastTime;
 
-    public GameHost(IWindow window, IRenderer renderer, IInputManager inputManager, CompositeLogicNode game)
+    public GameHost(IWindow window, IRenderer renderer, IInputManager inputManager, CompositeNode game)
     {
         _window = window;
         _renderer = renderer;

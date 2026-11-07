@@ -12,13 +12,13 @@ public class LayoutNode implements ILayoutChangeListener
     public final Transform LocalTransform = new Transform(this);
     public final Transform WorldTransform = new Transform(null);
 
-    private LogicNode _parent;
+    private Node _parent;
 
     // Start with all properties invalid.
     private final EnumSet<LayoutInvalidation> _invalidation = EnumSet.allOf(LayoutInvalidation.class);
 
-    public final void SetParent(LogicNode parent) { _parent = parent; }
-    public final LogicNode GetParent() { return _parent; }
+    public final void SetParent(Node parent) { _parent = parent; }
+    public final Node GetParent() { return _parent; }
 
     public boolean HasLayoutInvalidation(EnumSet<LayoutInvalidation> invalidations)
     {

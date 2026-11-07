@@ -1,16 +1,17 @@
-package it.unicam.cs.mpgc.rpg130575.Hosts;
+package it.unicam.cs.mpgc.rpg130575.Backends.JavaFX.Hosts;
 
 import it.unicam.cs.mpgc.rpg130575.DependencyInjection.DependencyContainer;
 import it.unicam.cs.mpgc.rpg130575.Game.Game;
-import it.unicam.cs.mpgc.rpg130575.Input.JavaFXInputManager;
-import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeLogicNode;
+import it.unicam.cs.mpgc.rpg130575.Backends.JavaFX.Input.JavaFXInputManager;
+import it.unicam.cs.mpgc.rpg130575.Hosts.GameHost;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeNode;
 import it.unicam.cs.mpgc.rpg130575.Rendering.IWindow;
-import it.unicam.cs.mpgc.rpg130575.Rendering.JavaFXRenderer;
-import it.unicam.cs.mpgc.rpg130575.Rendering.JavaFXWindow;
+import it.unicam.cs.mpgc.rpg130575.Backends.JavaFX.Rendering.JavaFXRenderer;
+import it.unicam.cs.mpgc.rpg130575.Backends.JavaFX.Rendering.JavaFXWindow;
 import it.unicam.cs.mpgc.rpg130575.Types.Audio.ISampleStorage;
-import it.unicam.cs.mpgc.rpg130575.Types.Audio.JavaFXSampleStorage;
+import it.unicam.cs.mpgc.rpg130575.Backends.JavaFX.Types.Audio.JavaFXSampleStore;
 import it.unicam.cs.mpgc.rpg130575.Types.Textures.INativeTextureStorage;
-import it.unicam.cs.mpgc.rpg130575.Types.Textures.JavaFXTextureStorage;
+import it.unicam.cs.mpgc.rpg130575.Backends.JavaFX.Types.Textures.JavaFXTextureStore;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -52,15 +53,15 @@ public final class JavaFXHost extends Application
         gameLoop.start();
     }
 
-    private CompositeLogicNode CreateGame()
+    private CompositeNode CreateGame()
     {
         Game game = new Game();
 
         DependencyContainer startingDependencies = new DependencyContainer(DependencyContainer.Empty);
 
         // Cache as the interface.
-        startingDependencies.Cache(INativeTextureStorage.class, new JavaFXTextureStorage());
-        startingDependencies.Cache(ISampleStorage.class, new JavaFXSampleStorage());
+        startingDependencies.Cache(INativeTextureStorage.class, new JavaFXTextureStore());
+        startingDependencies.Cache(ISampleStorage.class, new JavaFXSampleStore());
 
         startingDependencies.Cache(IWindow.class, _window);
 

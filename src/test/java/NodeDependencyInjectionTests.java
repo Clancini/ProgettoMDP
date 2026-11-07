@@ -1,13 +1,13 @@
 import it.unicam.cs.mpgc.rpg130575.DependencyInjection.DependencyContainer;
 import it.unicam.cs.mpgc.rpg130575.DependencyInjection.IReadOnlyDependencyContainer;
-import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeLogicNode;
-import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LogicNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Base.Node;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class LogicNodeDependencyInjectionTests
+public class NodeDependencyInjectionTests
 {
     @Test
     public void ChildNodeGetsDependencyFromContainer()
@@ -78,12 +78,12 @@ public class LogicNodeDependencyInjectionTests
         }
     }
 
-    private class TestNode extends LogicNode
+    private class TestNode extends Node
     {
         public <T> T GetDependency(Class<T> type) { return GetDependencyContainer().Get(type); }
     }
 
-    private class TestContainer extends CompositeLogicNode
+    private class TestContainer extends CompositeNode
     {
         public final TestDependency DependencyToContribute;
 

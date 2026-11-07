@@ -1,11 +1,11 @@
 package it.unicam.cs.mpgc.rpg130575.Nodes;
 
-import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LogicNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Base.Node;
 import it.unicam.cs.mpgc.rpg130575.Types.Textures.INativeTexture;
 import it.unicam.cs.mpgc.rpg130575.Types.Textures.INativeTextureStorage;
 import it.unicam.cs.mpgc.rpg130575.Types.Textures.TextureInfo;
 
-public class SpriteNode extends LogicNode
+public class SpriteNode extends Node
 {
     private INativeTexture _nativeTexture;
 

@@ -1,5 +1,6 @@
-package it.unicam.cs.mpgc.rpg130575.Types.Audio;
+package it.unicam.cs.mpgc.rpg130575.Backends.JavaFX.Types.Audio;
 
+import it.unicam.cs.mpgc.rpg130575.Types.Audio.ISample;
 import javafx.scene.media.AudioClip;
 
 public class JavaFXSample implements ISample

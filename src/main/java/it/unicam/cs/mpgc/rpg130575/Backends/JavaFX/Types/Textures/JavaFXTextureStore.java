@@ -1,8 +1,12 @@
-package it.unicam.cs.mpgc.rpg130575.Types.Textures;
+package it.unicam.cs.mpgc.rpg130575.Backends.JavaFX.Types.Textures;
+
+import it.unicam.cs.mpgc.rpg130575.Types.Textures.INativeTexture;
+import it.unicam.cs.mpgc.rpg130575.Types.Textures.INativeTextureStorage;
+import it.unicam.cs.mpgc.rpg130575.Types.Textures.TextureInfo;
 
 import java.util.HashMap;
 
-public class JavaFXTextureStorage implements INativeTextureStorage
+public class JavaFXTextureStore implements INativeTextureStorage
 {
     private final HashMap<String, JavaFXTexture> _textures = new HashMap<>();
 

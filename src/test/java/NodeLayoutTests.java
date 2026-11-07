@@ -1,5 +1,5 @@
-import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeLogicNode;
-import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LogicNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Base.Node;
 import it.unicam.cs.mpgc.rpg130575.Types.Layout.LayoutInvalidation;
 import org.junit.jupiter.api.Test;
 
@@ -8,15 +8,15 @@ import java.util.EnumSet;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class LogicNodeLayoutTests
+public class NodeLayoutTests
 {
     @Test
     public void LayoutUpdatesArePropagated()
     {
-        CompositeLogicNode rootNode = new CompositeLogicNode();
+        CompositeNode rootNode = new CompositeNode();
 
-        LogicNode childNode1 = new LogicNode();
-        LogicNode childNode2 = new LogicNode();
+        Node childNode1 = new Node();
+        Node childNode2 = new Node();
 
         rootNode.Add(childNode1);
         rootNode.Add(childNode2);
@@ -37,10 +37,10 @@ public class LogicNodeLayoutTests
     @Test
     public void LayoutInvalidationsArePropagated()
     {
-        CompositeLogicNode rootNode = new CompositeLogicNode();
+        CompositeNode rootNode = new CompositeNode();
 
-        LogicNode childNode1 = new LogicNode();
-        LogicNode childNode2 = new LogicNode();
+        Node childNode1 = new Node();
+        Node childNode2 = new Node();
 
         rootNode.Add(childNode1);
         rootNode.Add(childNode2);
@@ -59,13 +59,13 @@ public class LogicNodeLayoutTests
     @Test
     public void LayoutInvalidationArePropagatedToParents()
     {
-        CompositeLogicNode rootNode = new CompositeLogicNode();
-        CompositeLogicNode childParentNode = new CompositeLogicNode();
+        CompositeNode rootNode = new CompositeNode();
+        CompositeNode childParentNode = new CompositeNode();
 
         rootNode.Add(childParentNode);
 
-        LogicNode childNode1 = new LogicNode();
-        LogicNode childNode2 = new LogicNode();
+        Node childNode1 = new Node();
+        Node childNode2 = new Node();
 
         childParentNode.Add(childNode1);
         childParentNode.Add(childNode2);

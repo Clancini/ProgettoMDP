@@ -1,7 +1,7 @@
 package it.unicam.cs.mpgc.rpg130575.Nodes.Composite;
 
 import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LayoutNode;
-import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LogicNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Base.Node;
 import it.unicam.cs.mpgc.rpg130575.Types.Layout.LayoutInvalidation;
 
 import java.util.ArrayList;
@@ -9,9 +9,9 @@ import java.util.ArrayList;
 public class CompositeLayoutNode extends LayoutNode
 {
     // Reuse the main list. Sharing a reference means we don't have to update this one individually.
-    private final ArrayList<LogicNode> _children;
+    private final ArrayList<Node> _children;
 
-    public CompositeLayoutNode(ArrayList<LogicNode> children)
+    public CompositeLayoutNode(ArrayList<Node> children)
     {
         _children = children;
     }
@@ -26,7 +26,7 @@ public class CompositeLayoutNode extends LayoutNode
 
     protected final void InvalidatePropertyInChildren(LayoutInvalidation property)
     {
-        for (LogicNode child : _children)
+        for (Node child : _children)
         {
             child.GetLayoutNode().InvalidateProperty(property);
         }
@@ -37,7 +37,7 @@ public class CompositeLayoutNode extends LayoutNode
     {
         super.UpdateLayout();
 
-        for (LogicNode child : _children)
+        for (Node child : _children)
         {
             child.GetLayoutNode().UpdateLayout();
         }

@@ -1,8 +1,8 @@
 import it.unicam.cs.mpgc.rpg130575.Input.CKeyboardKey;
 import it.unicam.cs.mpgc.rpg130575.Input.CKeyboardKeyEvent;
 import it.unicam.cs.mpgc.rpg130575.Input.GameInputPropagator;
-import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LogicNode;
-import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeLogicNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Base.Node;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeNode;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -63,7 +63,7 @@ public class InputPropagationTests
         assertFalse(compositeNode.GetHasReceivedInput());
     }
 
-    private class TestingNode extends LogicNode
+    private class TestingNode extends Node
     {
         private boolean _hasReceivedInput;
 
@@ -83,7 +83,7 @@ public class InputPropagationTests
         }
     }
 
-    private class TestingCompositeNode extends CompositeLogicNode
+    private class TestingCompositeNode extends CompositeNode
     {
         private boolean _hasReceivedInput;
 

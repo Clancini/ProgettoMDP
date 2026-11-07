@@ -1,8 +1,11 @@
-package it.unicam.cs.mpgc.rpg130575.Types.Audio;
+package it.unicam.cs.mpgc.rpg130575.Backends.JavaFX.Types.Audio;
+
+import it.unicam.cs.mpgc.rpg130575.Types.Audio.ISample;
+import it.unicam.cs.mpgc.rpg130575.Types.Audio.ISampleStorage;
 
 import java.util.HashMap;
 
-public class JavaFXSampleStorage implements ISampleStorage
+public class JavaFXSampleStore implements ISampleStorage
 {
     private final HashMap<String, ISample> _samples = new HashMap<>();
 

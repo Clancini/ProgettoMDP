@@ -1,20 +1,19 @@
 package it.unicam.cs.mpgc.rpg130575.Nodes.Composite;
 
-import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LogicNode;
+import it.unicam.cs.mpgc.rpg130575.Nodes.Base.Node;
 import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LogicNodeLoadState;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
-public class CompositeLogicNode extends LogicNode
+public class CompositeNode extends Node
 {
-    private final ArrayList<LogicNode> _children = new ArrayList<>();
-    private final ArrayList<LogicNode> _pendingChildrenAdd = new ArrayList<>();
+    private final ArrayList<Node> _children = new ArrayList<>();
+    private final ArrayList<Node> _pendingChildrenAdd = new ArrayList<>();
 
     private boolean _ignoreSubtreeForInput;
 
-    public void Add(LogicNode node)
+    public void Add(Node node)
     {
         _pendingChildrenAdd.add(node);
 
@@ -25,7 +24,7 @@ public class CompositeLogicNode extends LogicNode
     }
 
     @Override
-    public final boolean JoinInputQueueIfNeeded(List<LogicNode> list)
+    public final boolean JoinInputQueueIfNeeded(List<Node> list)
     {
         if (!super.JoinInputQueueIfNeeded(list))
             return false;
@@ -33,7 +32,7 @@ public class CompositeLogicNode extends LogicNode
         if (_ignoreSubtreeForInput)
             return false;
 
-        for (LogicNode child : _children)
+        for (Node child : _children)
         {
             child.JoinInputQueueIfNeeded(list);
         }
@@ -51,7 +50,7 @@ public class CompositeLogicNode extends LogicNode
         _children.addAll(_pendingChildrenAdd);
         _pendingChildrenAdd.clear();
 
-        for (LogicNode child : _children)
+        for (Node child : _children)
         {
             child.Update(deltaSeconds);
         }
