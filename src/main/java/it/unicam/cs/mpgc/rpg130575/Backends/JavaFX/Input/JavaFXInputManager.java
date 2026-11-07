@@ -81,17 +81,17 @@ public class JavaFXInputManager implements EventHandler<KeyEvent>, IInputManager
 
     public void handle(KeyEvent event)
     {
+        CButtonState buttonState;
+
+        if (event.getEventType() == KeyEvent.KEY_PRESSED)
+            buttonState = CButtonState.DOWN;
+        else if (event.getEventType() == KeyEvent.KEY_RELEASED)
+            buttonState = CButtonState.UP;
+        else
+            return;
+
         for (IInputListener listener : _listeners)
         {
-            CButtonState buttonState;
-
-            if (event.getEventType() == KeyEvent.KEY_PRESSED)
-                buttonState = CButtonState.DOWN;
-            else if (event.getEventType() == KeyEvent.KEY_RELEASED)
-                buttonState = CButtonState.UP;
-            else
-                return;
-
             listener.OnKeyboardInput(
                     new CKeyboardKeyEvent(_keyboardKeysMappings.get(event.getCode())), buttonState);
         }
