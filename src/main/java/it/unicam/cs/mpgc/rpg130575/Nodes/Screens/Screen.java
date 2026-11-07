@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg130575.Game;
+package it.unicam.cs.mpgc.rpg130575.Nodes.Screens;
 
 import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeNode;
 
