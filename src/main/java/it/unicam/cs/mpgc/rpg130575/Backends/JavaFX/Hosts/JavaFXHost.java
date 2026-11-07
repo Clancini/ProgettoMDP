@@ -46,6 +46,7 @@ public final class JavaFXHost extends Application
         JavaFXInputManager inputManager = new JavaFXInputManager();
 
         scene.setOnKeyPressed(inputManager);
+        scene.setOnKeyReleased(inputManager);
 
         _gameHost = new GameHost(_window, renderer, inputManager, CreateGame());
 

@@ -87,8 +87,10 @@ public class JavaFXInputManager implements EventHandler<KeyEvent>, IInputManager
 
             if (event.getEventType() == KeyEvent.KEY_PRESSED)
                 buttonState = CButtonState.DOWN;
-            else
+            else if (event.getEventType() == KeyEvent.KEY_RELEASED)
                 buttonState = CButtonState.UP;
+            else
+                return;
 
             listener.OnKeyboardInput(
                     new CKeyboardKeyEvent(_keyboardKeysMappings.get(event.getCode())), buttonState);
