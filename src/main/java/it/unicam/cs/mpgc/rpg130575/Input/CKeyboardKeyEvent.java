@@ -4,9 +4,11 @@ package it.unicam.cs.mpgc.rpg130575.Input;
 public class CKeyboardKeyEvent
 {
     public final CKeyboardKey Key;
+    public final boolean IsRepeat;
 
-    public CKeyboardKeyEvent(CKeyboardKey key)
+    public CKeyboardKeyEvent(CKeyboardKey key, boolean isRepeat)
     {
         Key = key;
+        IsRepeat = isRepeat;
     }
 }

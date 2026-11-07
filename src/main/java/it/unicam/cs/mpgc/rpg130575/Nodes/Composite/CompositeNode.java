@@ -84,4 +84,6 @@ public class CompositeNode extends Node
     public void CreateDrawNode() { SetDrawNode(new CompositeDrawNode(GetLayoutNode(), _children)); }
     @Override
     public void CreateLayoutNode() { SetLayoutNode(new CompositeLayoutNode(_children)); }
+
+    public final int GetChildrenCount() { return _children.size() + _pendingChildrenAdd.size(); }
 }

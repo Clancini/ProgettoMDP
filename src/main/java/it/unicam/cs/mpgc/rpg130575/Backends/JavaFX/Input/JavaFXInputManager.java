@@ -14,6 +14,8 @@ public class JavaFXInputManager implements EventHandler<KeyEvent>, IInputManager
 {
     private final HashSet<IInputListener> _listeners = new HashSet<>();
 
+    private final HashSet<CKeyboardKey> _pressedKeys = new HashSet<>();
+
     private final Map<KeyCode, CKeyboardKey> _keyboardKeysMappings = Map.<KeyCode, CKeyboardKey>ofEntries(
             entry(KeyCode.A, CKeyboardKey.A),
             entry(KeyCode.B, CKeyboardKey.B),
@@ -82,18 +84,28 @@ public class JavaFXInputManager implements EventHandler<KeyEvent>, IInputManager
     public void handle(KeyEvent event)
     {
         CButtonState buttonState;
+        CKeyboardKey convertedKey = _keyboardKeysMappings.get(event.getCode());
+        boolean isRepeat = false;
 
         if (event.getEventType() == KeyEvent.KEY_PRESSED)
+        {
             buttonState = CButtonState.DOWN;
+            isRepeat = !_pressedKeys.add(convertedKey);
+        }
         else if (event.getEventType() == KeyEvent.KEY_RELEASED)
+        {
             buttonState = CButtonState.UP;
+            _pressedKeys.remove(convertedKey);
+        }
         else
+        {
             return;
+        }
 
         for (IInputListener listener : _listeners)
         {
             listener.OnKeyboardInput(
-                    new CKeyboardKeyEvent(_keyboardKeysMappings.get(event.getCode())), buttonState);
+                    new CKeyboardKeyEvent(convertedKey, isRepeat), buttonState);
         }
     }
 
