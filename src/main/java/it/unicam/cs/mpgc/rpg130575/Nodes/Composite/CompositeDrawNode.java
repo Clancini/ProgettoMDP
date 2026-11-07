@@ -23,7 +23,7 @@ public class CompositeDrawNode extends DrawNode
     {
         for (Node child : _children)
         {
-            child.GetDrawNode().Draw(renderer);
+            child.GetDrawNode().PreDraw(renderer);
         }
     }
 }
