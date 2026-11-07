@@ -1,5 +1,7 @@
 package it.unicam.cs.mpgc.rpg130575.Types.Tweening;
 
+import java.util.function.Consumer;
+
 public abstract class Tween
 {
     private final double _duration;
@@ -8,6 +10,9 @@ public abstract class Tween
     protected float Progress;
 
     private boolean _cancelled;
+
+    private Runnable _then;
+    private boolean _thenRan;
 
     public final float GetProgress() { return Progress; }
 
@@ -30,6 +35,13 @@ public abstract class Tween
         if (Progress > 1.0f)
             Progress = 1.0f;
 
+        if (IsDone() && !_thenRan && _then != null)
+        {
+            _thenRan = true;
+
+            _then.run();
+        }
+
         Update();
     }
 
@@ -51,5 +63,14 @@ public abstract class Tween
 
         Progress = 0;
         _passedTime = 0;
+
+        _thenRan = false;
+    }
+
+    public Tween Then(Runnable then)
+    {
+        _then = then;
+
+        return this;
     }
 }

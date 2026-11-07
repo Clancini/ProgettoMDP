@@ -7,7 +7,7 @@ public abstract class Screen extends CompositeNode
     private boolean _previousAcceptsInput;
     private boolean _previousSubtreeIgnoredForInput;
 
-    public final void OnPushedToStack()
+    public final void OnNewScreenPushedToStack()
     {
         _previousAcceptsInput = GetAcceptsInput();
         _previousSubtreeIgnoredForInput = GetIgnoreSubtreeForInput();
@@ -16,7 +16,7 @@ public abstract class Screen extends CompositeNode
         SetIgnoreSubtreeForInput(true);
     }
 
-    public final void OnPoppedFromStack()
+    public final void OnPreviousScreenPoppedFromStack()
     {
         SetAcceptsInput(_previousAcceptsInput);
         SetIgnoreSubtreeForInput(_previousSubtreeIgnoredForInput);

@@ -10,25 +10,32 @@ public class ScreenStack extends CompositeNode
 
     public void Push(Screen newScreen)
     {
-        _screens.peek().OnScreenQuit();
+        if (!_screens.isEmpty())
+        {
+            _screens.peek().OnNewScreenPushedToStack();
+            _screens.peek().OnScreenQuit();
+        }
 
         _screens.push(newScreen);
 
         Add(newScreen);
-        newScreen.OnPushedToStack();
-
         newScreen.OnScreenStart();
     }
 
     public void Pop()
     {
-        Screen screen = _screens.pop();
+        if (!_screens.isEmpty())
+        {
+            Screen screen = _screens.pop();
 
-        screen.OnScreenQuit();
+            screen.OnScreenQuit();
+            Remove(screen);
+        }
 
-        Remove(screen);
-        screen.OnPoppedFromStack();
-
-        _screens.peek().OnScreenStart();
+        if (!_screens.isEmpty())
+        {
+            _screens.peek().OnPreviousScreenPoppedFromStack();
+            _screens.peek().OnScreenStart();
+        }
     }
 }

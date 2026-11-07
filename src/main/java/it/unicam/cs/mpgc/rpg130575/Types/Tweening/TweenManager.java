@@ -13,10 +13,10 @@ public class TweenManager
     {
         for (Tween tween : _activeTweens)
         {
-            tween.TickForward(deltaSeconds);
-
             if (tween.IsDone() || tween.GetIsCancelled())
                 _pendingRemovals.add(tween);
+            else
+                tween.TickForward(deltaSeconds);
         }
 
         for (Tween tween : _pendingRemovals)
