@@ -17,6 +17,9 @@ public class TextureDrawNode extends DrawNode
     @Override
     public void Draw(IRenderer renderer)
     {
+        if (_source.GetTexture() == null)
+            return;
+
         renderer.DrawImage(_source.GetLayoutNode().WorldTransform, _source.GetTexture());
     }
 }
