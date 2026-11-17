@@ -43,7 +43,7 @@ public class JavaFXRenderer implements IRenderer
     public void DrawImage(Transform transform, INativeTexture texture)
     {
         if (!(texture instanceof JavaFXTexture javaFXTexture))
-            throw new IllegalStateException("Passed texture is not a JavaFXRenderer-compatible texture");
+            throw new IllegalStateException("Passed texture is not a JavaFXRenderer-compatible texture. " + texture.GetTextureInfo().GetResource());
 
         _context.drawImage(javaFXTexture.GetImage(),
                 transform.GetPositionX(),

@@ -17,7 +17,7 @@ public class InputPropagationTests
         TestingNode node = new TestingNode(false);
 
         GameInputPropagator propagator = new GameInputPropagator(node);
-        propagator.OnKeyboardInput(new CKeyboardKeyEvent(CKeyboardKey.ENTER), CButtonState.DOWN);
+        propagator.OnKeyboardInput(new CKeyboardKeyEvent(CKeyboardKey.ENTER, false), CButtonState.DOWN);
 
         assertFalse(node.GetHasReceivedInput());
     }
@@ -30,7 +30,7 @@ public class InputPropagationTests
         compositeNode.Add(node);
 
         GameInputPropagator propagator = new GameInputPropagator(compositeNode);
-        propagator.OnKeyboardInput(new CKeyboardKeyEvent(CKeyboardKey.ENTER), CButtonState.DOWN);
+        propagator.OnKeyboardInput(new CKeyboardKeyEvent(CKeyboardKey.ENTER, false), CButtonState.DOWN);
 
         assertFalse(node.GetHasReceivedInput());
         assertTrue(compositeNode.GetHasReceivedInput());
@@ -44,7 +44,7 @@ public class InputPropagationTests
         compositeNode.Add(node);
 
         GameInputPropagator propagator = new GameInputPropagator(compositeNode);
-        propagator.OnKeyboardInput(new CKeyboardKeyEvent(CKeyboardKey.ENTER), CButtonState.DOWN);
+        propagator.OnKeyboardInput(new CKeyboardKeyEvent(CKeyboardKey.ENTER, false), CButtonState.DOWN);
 
         assertTrue(node.GetHasReceivedInput());
         assertFalse(compositeNode.GetHasReceivedInput());
@@ -58,7 +58,7 @@ public class InputPropagationTests
         compositeNode.Add(node);
 
         GameInputPropagator propagator = new GameInputPropagator(compositeNode);
-        propagator.OnKeyboardInput(new CKeyboardKeyEvent(CKeyboardKey.ENTER), CButtonState.DOWN);
+        propagator.OnKeyboardInput(new CKeyboardKeyEvent(CKeyboardKey.ENTER, false), CButtonState.DOWN);
 
         assertTrue(node.GetHasReceivedInput());
         assertFalse(compositeNode.GetHasReceivedInput());
