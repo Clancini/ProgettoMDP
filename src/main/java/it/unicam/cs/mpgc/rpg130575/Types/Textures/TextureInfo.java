@@ -1,5 +1,6 @@
 package it.unicam.cs.mpgc.rpg130575.Types.Textures;
 
+/// Stores information about a texture in a backend-agnostic fashion.
 public class TextureInfo
 {
     private final String _resource;

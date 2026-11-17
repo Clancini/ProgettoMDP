@@ -1,7 +1,6 @@
 package it.unicam.cs.mpgc.rpg130575.Types.Tweening;
 
-import java.util.function.Consumer;
-
+/// Allows smooth over-time adjustments of given properties, with the possibility of chaining.
 public abstract class Tween
 {
     private final double _duration;

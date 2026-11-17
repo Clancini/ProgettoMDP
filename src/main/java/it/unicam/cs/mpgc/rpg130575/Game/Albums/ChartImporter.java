@@ -15,6 +15,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
+/// Handles reading and parsing of chart files inside an album.
+/// Required assets (e.g. track, images) must be loaded separately.
 public class ChartImporter
 {
     public Map.Entry<String, ChartInfo> Import(Path chartPath, String albumName, String albumLookup)
@@ -41,6 +43,7 @@ public class ChartImporter
         {
             Element event = (Element) eventNodes.item(i);
 
+            // This can be swapped for a dispatcher if more event types become available.
             if (event.hasAttribute("assetPath"))
             {
                 events.add(new AssetChartEventInfo(

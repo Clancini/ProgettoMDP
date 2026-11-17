@@ -3,6 +3,7 @@ package it.unicam.cs.mpgc.rpg130575.Types.Layout;
 import java.util.ArrayList;
 import java.util.List;
 
+/// Tracks position, sizing and scale of an object.
 public class Transform
 {
     private final List<ILayoutChangeListener> _changeListeners = new ArrayList<>();

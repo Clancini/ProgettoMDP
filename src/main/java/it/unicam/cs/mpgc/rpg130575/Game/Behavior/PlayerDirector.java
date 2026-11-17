@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+/// Handles dispatching of notes and events against a chart.
 public class PlayerDirector
 {
     public static final double NoteTravelSeconds = 2.0;

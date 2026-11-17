@@ -5,6 +5,10 @@ import it.unicam.cs.mpgc.rpg130575.Nodes.Base.Node;
 import java.util.ArrayList;
 import java.util.List;
 
+/** Handles discovery and propagation of input from the user inside the node tree.<br/>
+ * Nodes can choose whether they want to participate (and further propagate input).<br/>
+ * Propagation happens in a bottom-up fashion, stopping at the first node who marks the event as handled.
+ */
 public class GameInputPropagator implements IInputListener
 {
     private final Node _treeRoot;

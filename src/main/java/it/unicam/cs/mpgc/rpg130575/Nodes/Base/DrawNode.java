@@ -3,6 +3,9 @@ package it.unicam.cs.mpgc.rpg130575.Nodes.Base;
 import it.unicam.cs.mpgc.rpg130575.Rendering.IRenderer;
 import it.unicam.cs.mpgc.rpg130575.Types.CColor;
 
+/** A component used to attach rendering information to a Node.<br/>
+ * Provides a base for subclasses to extend.
+ */
 public class DrawNode
 {
     private final LayoutNode _source;

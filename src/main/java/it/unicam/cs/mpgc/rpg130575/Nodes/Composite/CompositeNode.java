@@ -6,6 +6,9 @@ import it.unicam.cs.mpgc.rpg130575.Nodes.Base.LogicNodeLoadState;
 import java.util.ArrayList;
 import java.util.List;
 
+/** A Node which allows Adding children to itself.<br/>
+ * Can manage input, rendering and layout for its children.
+ */
 public class CompositeNode extends Node
 {
     private final ArrayList<Node> _children = new ArrayList<>();

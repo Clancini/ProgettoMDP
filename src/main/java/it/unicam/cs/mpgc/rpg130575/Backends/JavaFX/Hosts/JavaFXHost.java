@@ -54,6 +54,8 @@ public final class JavaFXHost extends Application
         gameLoop.start();
     }
 
+    // Stop handling backend-specifics here.
+    // Create JavaFX dependencies and exposed them using the agnostic interfaces.
     private CompositeNode CreateGame()
     {
         Game game = new Game();

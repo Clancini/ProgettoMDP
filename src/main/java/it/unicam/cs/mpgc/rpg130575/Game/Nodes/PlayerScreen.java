@@ -408,7 +408,7 @@ public class PlayerScreen extends Screen
     {
         switch (event.Key)
         {
-            case ESCAPE:
+            case Esc:
 
                 if (!_isHoldingEsc && !_isExiting)
                 {
@@ -500,7 +500,7 @@ public class PlayerScreen extends Screen
     {
         switch (event.Key)
         {
-            case ESCAPE:
+            case Esc:
 
                 StopQuitting();
 

@@ -17,12 +17,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
+/// Handles loading and caching of albums (i.e. a collection of charts).
 public class AlbumsStore
 {
     private final LinkedHashMap<String, AlbumInfo> _lookup = new LinkedHashMap<>();
     private final ChartImporter _chartImporter = new ChartImporter();
 
-    public Path[] FindAlbums() throws URISyntaxException, IOException {
+    public Path[] FindAlbums() throws URISyntaxException, IOException
+    {
         return Files.list(
                         Path.of(AlbumsStore.class.getResource("/Albums")
                                 .toURI()))

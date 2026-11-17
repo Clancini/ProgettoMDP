@@ -2,6 +2,7 @@ package it.unicam.cs.mpgc.rpg130575.Nodes.Screens;
 
 import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeNode;
 
+/// A container which can be stacked on top of other Screens (and eventually popped).
 public abstract class Screen extends CompositeNode
 {
     private boolean _previousAcceptsInput;

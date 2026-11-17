@@ -4,6 +4,7 @@ import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeNode;
 
 import java.util.Stack;
 
+/// Handles a stack of Screens, providing capabilities for visually stacking and popping Nodes.
 public class ScreenStack extends CompositeNode
 {
     private final Stack<Screen> _screens = new Stack<>();

@@ -168,7 +168,7 @@ public class PlaySelectScreen extends Screen
     {
         switch (event.Key)
         {
-            case ESCAPE:
+            case Esc:
 
                 if (event.IsRepeat)
                     return false;
@@ -185,20 +185,20 @@ public class PlaySelectScreen extends Screen
 
                 return true;
 
-            case LEFT:
-            case UP:
+            case LeftArrow:
+            case UpArrow:
 
                 HoverAlbum(GetNextHoverFromDirection(-1));
                 return true;
 
-            case RIGHT:
-            case DOWN:
+            case RightArrow:
+            case DownArrow:
 
                 HoverAlbum(GetNextHoverFromDirection(+1));
                 return true;
 
-            case ENTER:
-            case SPACE:
+            case Enter:
+            case Space:
 
                 if (event.IsRepeat)
                     return false;

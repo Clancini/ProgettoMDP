@@ -6,6 +6,14 @@ import it.unicam.cs.mpgc.rpg130575.Types.Layout.Transform;
 
 import java.util.EnumSet;
 
+/** A component used to attach layout information to a Node.<br/>
+ * <br/>
+ * Layout is handled using 2 Transforms, 1 in local space and 1 in global (world) space.<br/>
+ * Local space is relative to an eventual parent container, while global space is relative to the screen.<br/>
+ * <br/>
+ * Layout includes X and Y positioning, scale, height and width.<br/>
+ * Updating a container's layout will invalidate itself and its children, causing them to be updated accordingly.
+ */
 public class LayoutNode implements ILayoutChangeListener
 {
     // We only care about invalidating ourselves when our local transform changes.

@@ -7,6 +7,7 @@ import it.unicam.cs.mpgc.rpg130575.Rendering.IRenderer;
 
 import java.util.ArrayList;
 
+/// A component which handles rendering of sub-DrawNodes in containers.
 public class CompositeDrawNode extends DrawNode
 {
     private final ArrayList<Node> _children;

@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+/** Handles note lifetimes. Specifically:<br/>
+ * - Expiring notes when they time out;<br/>
+ * - Judging player input related to note hitting.
+ */
 public class NoteHitChecker
 {
     public static final double HitWindowSeconds = 0.1;
@@ -69,6 +73,7 @@ public class NoteHitChecker
                 pressedNote = note;
         }
 
+        // If no note was pressed (i.e. MISS) all simultaneous ones should count as MISS as well.
         if (pressedNote == null)
         {
             for (ChartNoteInfo note : _simultaneousNotes)

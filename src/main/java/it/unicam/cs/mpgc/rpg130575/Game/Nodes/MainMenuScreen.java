@@ -76,7 +76,7 @@ public class MainMenuScreen extends Screen
     {
         switch (event.Key)
         {
-            case ESCAPE:
+            case Esc:
 
                 if (!_isQuitting)
                 {
@@ -117,8 +117,8 @@ public class MainMenuScreen extends Screen
 
                 return true;
 
-            case ENTER:
-            case SPACE:
+            case Enter:
+            case Space:
 
                 StopQuitting();
 
@@ -137,7 +137,7 @@ public class MainMenuScreen extends Screen
     {
         switch (event.Key)
         {
-            case ESCAPE:
+            case Esc:
 
                 StopQuitting();
 

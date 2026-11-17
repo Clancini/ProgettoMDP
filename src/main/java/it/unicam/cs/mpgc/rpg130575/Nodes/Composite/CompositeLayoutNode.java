@@ -6,6 +6,7 @@ import it.unicam.cs.mpgc.rpg130575.Types.Layout.LayoutInvalidation;
 
 import java.util.ArrayList;
 
+/// A component which handles layout of sub-LayoutNodes in containers.
 public class CompositeLayoutNode extends LayoutNode
 {
     // Reuse the main list. Sharing a reference means we don't have to update this one individually.

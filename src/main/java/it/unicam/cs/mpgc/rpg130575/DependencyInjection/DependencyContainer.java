@@ -3,6 +3,9 @@ package it.unicam.cs.mpgc.rpg130575.DependencyInjection;
 import java.util.HashMap;
 import java.util.Map;
 
+/** A scoped container (downwards) for dependencies to be passed down the Node tree.<br/>
+ * Supports shadowing of previously cached dependencies under the same type.
+ */
 public class DependencyContainer implements IDependencyContainer
 {
     public final static DependencyContainer Empty = new DependencyContainer();

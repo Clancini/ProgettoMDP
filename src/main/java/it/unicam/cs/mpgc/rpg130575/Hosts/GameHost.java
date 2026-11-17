@@ -6,6 +6,9 @@ import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeNode;
 import it.unicam.cs.mpgc.rpg130575.Rendering.IRenderer;
 import it.unicam.cs.mpgc.rpg130575.Rendering.IWindow;
 
+/** Backend-agnostic host for a game.<br/>
+ * Handles the general game loop.
+ */
 public class GameHost
 {
     private final IWindow _window;

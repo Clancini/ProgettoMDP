@@ -6,6 +6,13 @@ import it.unicam.cs.mpgc.rpg130575.Input.CKeyboardKeyEvent;
 
 import java.util.List;
 
+/** Base class for all objects part of a game built in this framework.<br/>
+ * Subclasses can extend this to add custom behavior and override default components.<br/>
+ * <br/>
+ * All Nodes in the tree must go through the following process:<br/>
+ * Instantiation -> Parenting to a container.<br/>
+ * This allows the Node's internal systems to initialize correctly and receive needed dependencies.
+ */
 public class Node
 {
     private DrawNode DrawNode;
