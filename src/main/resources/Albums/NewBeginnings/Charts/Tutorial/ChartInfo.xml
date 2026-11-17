@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Chart>
+    <Attributes>
+        <Name>Tutorial</Name>
+        <Lookup>Tutorial</Lookup>
+    </Attributes>
+
+    <Assets>
+        <Background path="Background.png" />
+        <Track path="audio.mp3" />
+    </Assets>
+
+    <Events>
+        <Event type="PAUSE" startTime="5.0" />
+
+        <Event type="IMAGE_SHOW" startTime="5.5" assetPath="slide1.png" width="690" height="243" />
+        <Event type="IMAGE_SHOW" startTime="9.25" assetPath="slide2.png" width="435" height="266" />
+        <Event type="IMAGE_SHOW" startTime="13.0" assetPath="slide3.png" width="659" height="128" />
+        <Event type="IMAGE_SHOW" startTime="16.5" assetPath="getreadyagain.png" width="280" height="52" />
+
+        <Event type="IMAGE_HIDE" startTime="18.5" />
+
+        <Event type="RESUME" startTime="19.0" />
+
+        <Event type="PAUSE" startTime="34.5" />
+        <Event type="RESUME" startTime="55.0" />
+
+        <Event type="PAUSE" startTime="64.0" />
+        <Event type="RESUME" startTime="74.0" />
+
+        <Event type="PAUSE" startTime="78.0" />
+        <Event type="RESUME" startTime="100.0" />
+    </Events>
+
+    <Notes>
+        <Note pressTime="2.277698815" lane="0" />
+        <Note pressTime="2.636691348" lane="0" />
+        <Note pressTime="2.954889274" lane="1" />
+        <Note pressTime="3.207815832" lane="2" />
+        <Note pressTime="3.672874340" lane="0" />
+        <Note pressTime="3.672874340" lane="2" />
+
+        <Note pressTime="21.690423097" lane="1" />
+        <Note pressTime="21.690423097" lane="3" />
+        <Note pressTime="22.147322685" lane="0" />
+        <Note pressTime="22.608301732" lane="1" />
+        <Note pressTime="22.967606311" lane="2" />
+        <Note pressTime="23.530454857" lane="3" />
+        <Note pressTime="24.003360241" lane="3" />
+        <Note pressTime="24.456492413" lane="2" />
+        <Note pressTime="24.705027464" lane="1" />
+        <Note pressTime="25.839234528" lane="0" />
+        <Note pressTime="26.304293037" lane="0" />
+        <Note pressTime="26.565378515" lane="1" />
+        <Note pressTime="27.225510025" lane="2" />
+        <Note pressTime="27.474357122" lane="2" />
+        <Note pressTime="27.694647994" lane="3" />
+        <Note pressTime="28.143076615" lane="0" />
+        <Note pressTime="28.497989687" lane="1" />
+        <Note pressTime="29.069114171" lane="1" />
+        <Note pressTime="29.991072267" lane="2" />
+        <Note pressTime="30.345985339" lane="3" />
+        <Note pressTime="31.157797999" lane="0" />
+        <Note pressTime="31.386247793" lane="1" />
+        <Note pressTime="31.839067919" lane="2" />
+        <Note pressTime="32.189901531" lane="3" />
+        <Note pressTime="32.765105476" lane="0" />
+        <Note pressTime="32.765105476" lane="2" />
+
+        <Note pressTime="59.069827443" lane="1" />
+        <Note pressTime="59.069827443" lane="3" />
+        <Note pressTime="59.535356658" lane="0" />
+        <Note pressTime="59.535356658" lane="2" />
+        <Note pressTime="60.911703904" lane="1" />
+        <Note pressTime="60.911703904" lane="3" />
+        <Note pressTime="61.377233120" lane="0" />
+        <Note pressTime="61.377233120" lane="2" />
+        <Note pressTime="62.065406742" lane="1" />
+        <Note pressTime="62.065406742" lane="3" />
+        <Note pressTime="62.753580365" lane="0" />
+        <Note pressTime="62.753580365" lane="2" />
+        <Note pressTime="63.219109581" lane="1" />
+        <Note pressTime="63.219109581" lane="3" />
+
+        <Note pressTime="77.322114589" lane="0" />
+        <Note pressTime="77.322114589" lane="2" />
+        <Note pressTime="77.534638796" lane="1" />
+        <Note pressTime="77.757283204" lane="0" />
+        <Note pressTime="77.757283204" lane="2" />
+
+        <Note pressTime="104.206121264" lane="1" />
+        <Note pressTime="104.206121264" lane="3" />
+        <Note pressTime="104.772852483" lane="0" />
+        <Note pressTime="105.218141298" lane="1" />
+        <Note pressTime="105.562228109" lane="2" />
+        <Note pressTime="105.926555322" lane="3" />
+        <Note pressTime="106.624849145" lane="3" />
+        <Note pressTime="107.525546975" lane="2" />
+        <Note pressTime="107.859513586" lane="1" />
+        <Note pressTime="108.203600397" lane="0" />
+        <Note pressTime="108.436365005" lane="0" />
+        <Note pressTime="108.679249813" lane="1" />
+
+        <Note pressTime="108.922134621" lane="0" />
+        <Note pressTime="108.922134621" lane="2" />
+
+        <Note pressTime="109.367423436" lane="1" />
+        <Note pressTime="109.711510247" lane="2" />
+        <Note pressTime="110.298481867" lane="3" />
+        <Note pressTime="111.219420098" lane="0" />
+        <Note pressTime="111.553386709" lane="0" />
+        <Note pressTime="111.695069513" lane="1" />
+        <Note pressTime="112.393363337" lane="2" />
+        <Note pressTime="112.616007744" lane="3" />
+        <Note pressTime="113.055496891" lane="3" />
+        <Note pressTime="113.419824103" lane="2" />
+        <Note pressTime="113.976435121" lane="1" />
+        <Note pressTime="115.281940965" lane="0" />
+        <Note pressTime="115.848672184" lane="1" />
+
+        <Note pressTime="116.293960998" lane="0" />
+        <Note pressTime="116.293960998" lane="2" />
+
+        <Note pressTime="118.621607076" lane="1" />
+        <Note pressTime="118.621607076" lane="3" />
+        <Note pressTime="118.945453487" lane="0" />
+        <Note pressTime="118.945453487" lane="2" />
+        <Note pressTime="119.208578695" lane="1" />
+        <Note pressTime="119.208578695" lane="3" />
+        <Note pressTime="119.512184705" lane="0" />
+        <Note pressTime="119.512184705" lane="2" />
+    </Notes>
+
+</Chart>

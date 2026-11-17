@@ -1,7 +1,7 @@
 package it.unicam.cs.mpgc.rpg130575.Backends.JavaFX.Hosts;
 
 import it.unicam.cs.mpgc.rpg130575.DependencyInjection.DependencyContainer;
-import it.unicam.cs.mpgc.rpg130575.Game.Game;
+import it.unicam.cs.mpgc.rpg130575.Game.Nodes.Game;
 import it.unicam.cs.mpgc.rpg130575.Backends.JavaFX.Input.JavaFXInputManager;
 import it.unicam.cs.mpgc.rpg130575.Hosts.GameHost;
 import it.unicam.cs.mpgc.rpg130575.Nodes.Composite.CompositeNode;
