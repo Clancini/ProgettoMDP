@@ -329,16 +329,16 @@ public class PlayerScreen extends Screen
 
         switch (event.Type())
         {
-            case PAUSE:
-            case RESUME:
+            case Pause:
+            case Resume:
                 AnimatePause(event.Type());
                 break;
 
-            case IMAGE_SHOW:
+            case ImageShow:
                 ShowStoryboardImage(event);
                 break;
 
-            case IMAGE_HIDE:
+            case ImageHide:
                 HideStoryboardImage();
                 break;
 
@@ -357,11 +357,11 @@ public class PlayerScreen extends Screen
         Transform hitLineTransform =
                 _hitLine.GetLayoutNode().LocalTransform;
 
-        float lanesStart = event == ChartEventType.PAUSE ? 0 : _windowHeight;
-        float lanesEnd = event == ChartEventType.PAUSE ? _windowHeight : 0;
+        float lanesStart = event == ChartEventType.Pause ? 0 : _windowHeight;
+        float lanesEnd = event == ChartEventType.Pause ? _windowHeight : 0;
 
-        float hitLineStart = event == ChartEventType.PAUSE ? 0 : _windowWidth;
-        float hitLineEnd = event == ChartEventType.PAUSE ? _windowWidth : 0;
+        float hitLineStart = event == ChartEventType.Pause ? 0 : _windowWidth;
+        float hitLineEnd = event == ChartEventType.Pause ? _windowWidth : 0;
 
         _lanesPauseTween = new TransformPositionYTween(
                 lanesTransform, _lanesSlideInSeconds, lanesStart, lanesEnd

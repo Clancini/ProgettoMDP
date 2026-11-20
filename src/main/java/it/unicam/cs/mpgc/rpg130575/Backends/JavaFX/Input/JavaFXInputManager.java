@@ -90,12 +90,12 @@ public class JavaFXInputManager implements EventHandler<KeyEvent>, IInputManager
 
         if (event.getEventType() == KeyEvent.KEY_PRESSED)
         {
-            buttonState = CButtonState.DOWN;
+            buttonState = CButtonState.Down;
             isRepeat = !_pressedKeys.add(convertedKey);
         }
         else if (event.getEventType() == KeyEvent.KEY_RELEASED)
         {
-            buttonState = CButtonState.UP;
+            buttonState = CButtonState.Up;
             _pressedKeys.remove(convertedKey);
         }
         else

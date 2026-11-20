@@ -29,7 +29,7 @@ public class GameInputPropagator implements IInputListener
 
         final List<Node> reversedInputQueue = _inputQueue.reversed();
 
-        if (state == CButtonState.DOWN)
+        if (state == CButtonState.Down)
         {
             for (Node node : reversedInputQueue)
             {

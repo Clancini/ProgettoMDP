@@ -18,8 +18,8 @@ public class PlayerDirectorTests
     {
         ChartInfo chartInfo = new ChartInfo("", "", "", "", new ArrayList<>(), new ArrayList<>());
 
-        chartInfo.Events().add(new ChartEventInfo(ChartEventType.PAUSE, 0));
-        chartInfo.Events().add(new ChartEventInfo(ChartEventType.RESUME, 10));
+        chartInfo.Events().add(new ChartEventInfo(ChartEventType.Pause, 0));
+        chartInfo.Events().add(new ChartEventInfo(ChartEventType.Resume, 10));
 
         Clock clock = new Clock();
         clock.Start();
