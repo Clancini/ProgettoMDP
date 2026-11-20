@@ -11,25 +11,25 @@
     </Assets>
 
     <Events>
-        <Event type="PAUSE" startTime="5.0" />
+        <Event type="Pause" startTime="5.0" />
 
-        <Event type="IMAGE_SHOW" startTime="5.5" assetPath="slide1.png" width="690" height="243" />
-        <Event type="IMAGE_SHOW" startTime="9.25" assetPath="slide2.png" width="435" height="266" />
-        <Event type="IMAGE_SHOW" startTime="13.0" assetPath="slide3.png" width="659" height="128" />
-        <Event type="IMAGE_SHOW" startTime="16.5" assetPath="getreadyagain.png" width="280" height="52" />
+        <Event type="ImageShow" startTime="5.5" assetPath="slide1.png" width="690" height="243" />
+        <Event type="ImageShow" startTime="9.25" assetPath="slide2.png" width="435" height="266" />
+        <Event type="ImageShow" startTime="13.0" assetPath="slide3.png" width="659" height="128" />
+        <Event type="ImageShow" startTime="16.5" assetPath="getreadyagain.png" width="280" height="52" />
 
-        <Event type="IMAGE_HIDE" startTime="18.5" />
+        <Event type="ImageHide" startTime="18.5" />
 
-        <Event type="RESUME" startTime="19.0" />
+        <Event type="Resume" startTime="19.0" />
 
-        <Event type="PAUSE" startTime="34.5" />
-        <Event type="RESUME" startTime="55.0" />
+        <Event type="Pause" startTime="34.5" />
+        <Event type="Resume" startTime="55.0" />
 
-        <Event type="PAUSE" startTime="64.0" />
-        <Event type="RESUME" startTime="74.0" />
+        <Event type="Pause" startTime="64.0" />
+        <Event type="Resume" startTime="74.0" />
 
-        <Event type="PAUSE" startTime="78.0" />
-        <Event type="RESUME" startTime="100.0" />
+        <Event type="Pause" startTime="78.0" />
+        <Event type="Resume" startTime="100.0" />
     </Events>
 
     <Notes>

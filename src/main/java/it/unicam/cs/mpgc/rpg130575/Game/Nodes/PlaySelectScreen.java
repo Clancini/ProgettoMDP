@@ -4,6 +4,7 @@ import it.unicam.cs.mpgc.rpg130575.DependencyInjection.DependencyContainer;
 import it.unicam.cs.mpgc.rpg130575.DependencyInjection.IReadOnlyDependencyContainer;
 import it.unicam.cs.mpgc.rpg130575.Game.Albums.AlbumInfo;
 import it.unicam.cs.mpgc.rpg130575.Game.Albums.AlbumsStore;
+import it.unicam.cs.mpgc.rpg130575.Game.Albums.ChartInfo;
 import it.unicam.cs.mpgc.rpg130575.Game.SampleStrings;
 import it.unicam.cs.mpgc.rpg130575.Input.CKeyboardKeyEvent;
 import it.unicam.cs.mpgc.rpg130575.Nodes.Base.DrawNode;
@@ -203,7 +204,13 @@ public class PlaySelectScreen extends Screen
                 if (event.IsRepeat)
                     return false;
 
-                PlayerScreen playerScreen = new PlayerScreen(_albumsStore.GetLoadedAlbums()[_hoveredAlbumIndex].Charts().get("Tutorial"));
+                // TODO: This should no be hardcoded. A random chart in the album should be picked in the finished game.
+                ChartInfo tutorial = _albumsStore.GetLoadedAlbums()[_hoveredAlbumIndex].Charts().get("Tutorial");
+
+                if (tutorial == null)
+                    return true;
+
+                PlayerScreen playerScreen = new PlayerScreen(tutorial);
 
                 _screenStack.Push(playerScreen);
 
