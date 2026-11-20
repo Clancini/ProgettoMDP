@@ -52,6 +52,12 @@ public class MainMenuScreen extends Screen
         TextureInfo holdEscToQuitInfo = new TextureInfo("/MainMenu/HoldEscToQuit.png", 363, 59);
         _textureStore.AddTexture(holdEscToQuitInfo, "HoldEscToQuitLeft", true);
 
+        TextureInfo logoInfo = new TextureInfo("/MainMenu/TitleScreenLogo.png", 323, 279);
+        _textureStore.AddTexture(logoInfo, "MainMenuLogo", true);
+
+        TextureInfo pressSpaceInfo = new TextureInfo("/MainMenu/PressSpaceToPlay.png", 542, 82);
+        _textureStore.AddTexture(pressSpaceInfo, "PressSpaceToPlay", true);
+
         _sampleStorage.AddSample("/MainMenu/osu.MainMenuBack.wav", SampleStrings.MenuExit, true);
         _sampleStorage.AddSample("/MainMenu/osu.ButtonSelectMedium.wav", SampleStrings.ButtonSelectMedium, true);
         _sampleStorage.AddSample("/MainMenu/osu.Hover.wav", SampleStrings.Hover, true);
@@ -63,7 +69,27 @@ public class MainMenuScreen extends Screen
         _holdEscToQuitText = new SpriteNode();
         Add(_holdEscToQuitText);
         _holdEscToQuitText.SetTexture("HoldEscToQuitLeft", true);
+
+        SpriteNode logo = new SpriteNode();
+        Add(logo);
+        logo.SetTexture("MainMenuLogo", true);
+
+        SpriteNode spaceToPlay = new SpriteNode();
+        Add(spaceToPlay);
+        spaceToPlay.SetTexture("PressSpaceToPlay", true);
+
+        Transform spaceToPlayTransform = spaceToPlay.GetLayoutNode().LocalTransform;
+
+        spaceToPlayTransform.SetPositionY(_window.GetHeight() - 150);
+        spaceToPlayTransform.SetPositionX(_window.GetWidth() / 2 - spaceToPlayTransform.GetWidth() / 2);
+
+        Transform logoTransform = logo.GetLayoutNode().LocalTransform;
+
+        logoTransform.SetPositionY(50);
+        logoTransform.SetPositionX(_window.GetWidth() / 2 - logoTransform.GetWidth() / 2);
+
         Transform holdEscToQuitTransform = _holdEscToQuitText.GetLayoutNode().LocalTransform;
+
         holdEscToQuitTransform.SetPositionY(_window.GetHeight() - holdEscToQuitInfo.GetHeight() - 35);
         holdEscToQuitTransform.SetPositionX(-350);
         holdEscToQuitTransform.SetScale(0.75f);
