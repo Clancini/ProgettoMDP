@@ -14,6 +14,10 @@ public class JavaFXTextureStore implements INativeTextureStore
 
     public void AddTexture(TextureInfo info, String lookup, boolean load)
     {
+        if (_textures.containsKey(lookup) &&
+                _textures.get(lookup).GetTextureInfo().GetResource().equals(info.GetResource()))
+            return;
+
         JavaFXTexture texture = new JavaFXTexture(info);
 
         if (load)

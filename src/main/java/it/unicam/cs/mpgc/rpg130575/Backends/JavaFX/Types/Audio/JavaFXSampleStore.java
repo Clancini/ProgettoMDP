@@ -13,6 +13,10 @@ public class JavaFXSampleStore implements ISampleStorage
 
     public void AddSample(String resource, String lookup, boolean load)
     {
+        if (_samples.containsKey(lookup) &&
+                _samples.get(lookup).GetResource().equals(resource))
+            return;
+
         JavaFXSample sample = new JavaFXSample(resource);
 
         if (load)
