@@ -3,6 +3,8 @@
 
 In breve, lo scopo del gioco è colpire note a ritmo di musica (fa male al nemico!) e acquistare effetti che cambiano le regole di gioco.
 
+Vedere la Wiki per spiegazioni (molto) più approfondite.
+
 ### Esecuzione
 
 E' necessario almeno JDK 24 | Java 25.0.4.1.
